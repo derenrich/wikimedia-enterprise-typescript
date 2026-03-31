@@ -1,6 +1,6 @@
 {
   "name": "wikimedia-enterprise",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The official TypeScript library for the Wikimedia Enterprise API",
   "author": "Wikimedia Enterprise <>",
   "types": "dist/index.d.ts",
