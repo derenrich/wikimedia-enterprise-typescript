@@ -24,9 +24,11 @@ export const login: CLICommand = async (args): Promise<CLIResult> => {
   // Pass a placeholder to satisfy the constructor requirement.
   const client = new WikimediaEnterprise({ apiKey: '_' });
   const response = await client.login.authenticate({ username, password });
-  return { exitCode: 0, stdout: [`WME_ACCESS_TOKEN=${response.access_token}\nREFRESH_TOKEN=${response.refresh_token}`] };
-
-}
+  return {
+    exitCode: 0,
+    stdout: [`WME_ACCESS_TOKEN=${response.access_token}\nREFRESH_TOKEN=${response.refresh_token}`],
+  };
+};
 
 function usage(): string {
   return 'Usage: wikimedia-enterprise login --username <username> --password <password>';
