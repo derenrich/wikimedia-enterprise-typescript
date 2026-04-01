@@ -43,6 +43,7 @@ import {
   Batches,
   Size,
 } from './resources/batches';
+import { ChangePassword, ChangePasswordUpdateParams } from './resources/change-password';
 import {
   Code,
   CodeCreateParams,
@@ -54,6 +55,11 @@ import {
   Codes,
   Filter,
 } from './resources/codes';
+import { ForgotPassword, ForgotPasswordSendConfirmationCodeParams } from './resources/forgot-password';
+import {
+  ForgotPasswordConfirm,
+  ForgotPasswordConfirmConfirmParams,
+} from './resources/forgot-password-confirm';
 import {
   Language,
   LanguageCreateParams,
@@ -64,6 +70,7 @@ import {
   LanguageUpdateParams,
   Languages,
 } from './resources/languages';
+import { Login, LoginAuthenticateParams, LoginAuthenticateResponse } from './resources/login';
 import {
   Namespace,
   NamespaceCreateParams,
@@ -74,6 +81,11 @@ import {
   NamespaceUpdateParams,
   Namespaces,
 } from './resources/namespaces';
+import {
+  NewPasswordRequired,
+  NewPasswordRequiredRespondParams,
+  NewPasswordRequiredRespondResponse,
+} from './resources/new-password-required';
 import {
   Project,
   ProjectCreateParams,
@@ -93,6 +105,12 @@ import {
   StructuredContentRetrieveResponse,
   StructuredContents,
 } from './resources/structured-contents';
+import {
+  TokenRefresh,
+  TokenRefreshRefreshParams,
+  TokenRefreshRefreshResponse,
+} from './resources/token-refresh';
+import { TokenRevoke, TokenRevokeRevokeParams } from './resources/token-revoke';
 import {
   Snapshot,
   SnapshotCreateParams,
@@ -294,7 +312,14 @@ export class WikimediaEnterprise {
     return;
   }
 
-  protected async authHeaders(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+  protected async authHeaders(
+    opts: FinalRequestOptions,
+    schemes: { bearerAuth?: boolean },
+  ): Promise<NullableHeaders | undefined> {
+    return buildHeaders([schemes.bearerAuth ? await this.bearerAuth(opts) : null]);
+  }
+
+  protected async bearerAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.apiKey}` }]);
   }
 
@@ -721,7 +746,7 @@ export class WikimediaEnterprise {
         ...(options.timeout ? { 'X-Stainless-Timeout': String(Math.trunc(options.timeout / 1000)) } : {}),
         ...getPlatformHeaders(),
       },
-      await this.authHeaders(options),
+      await this.authHeaders(options, options.__security ?? { bearerAuth: true }),
       this._options.defaultHeaders,
       bodyHeaders,
       options.headers,
@@ -835,6 +860,34 @@ export class WikimediaEnterprise {
    * (BETA) Structured Contents On-demand API
    */
   structuredContents: API.StructuredContents = new API.StructuredContents(this);
+  /**
+   * Authentication and Account Management
+   */
+  login: API.Login = new API.Login(this);
+  /**
+   * Authentication and Account Management
+   */
+  tokenRefresh: API.TokenRefresh = new API.TokenRefresh(this);
+  /**
+   * Authentication and Account Management
+   */
+  tokenRevoke: API.TokenRevoke = new API.TokenRevoke(this);
+  /**
+   * Authentication and Account Management
+   */
+  forgotPassword: API.ForgotPassword = new API.ForgotPassword(this);
+  /**
+   * Authentication and Account Management
+   */
+  forgotPasswordConfirm: API.ForgotPasswordConfirm = new API.ForgotPasswordConfirm(this);
+  /**
+   * Authentication and Account Management
+   */
+  changePassword: API.ChangePassword = new API.ChangePassword(this);
+  /**
+   * Authentication and Account Management
+   */
+  newPasswordRequired: API.NewPasswordRequired = new API.NewPasswordRequired(this);
 }
 
 WikimediaEnterprise.Codes = Codes;
@@ -846,6 +899,13 @@ WikimediaEnterprise.Snapshots = Snapshots;
 WikimediaEnterprise.Articles = Articles;
 WikimediaEnterprise.Wikidata = Wikidata;
 WikimediaEnterprise.StructuredContents = StructuredContents;
+WikimediaEnterprise.Login = Login;
+WikimediaEnterprise.TokenRefresh = TokenRefresh;
+WikimediaEnterprise.TokenRevoke = TokenRevoke;
+WikimediaEnterprise.ForgotPassword = ForgotPassword;
+WikimediaEnterprise.ForgotPasswordConfirm = ForgotPasswordConfirm;
+WikimediaEnterprise.ChangePassword = ChangePassword;
+WikimediaEnterprise.NewPasswordRequired = NewPasswordRequired;
 
 export declare namespace WikimediaEnterprise {
   export type RequestOptions = Opts.RequestOptions;
@@ -945,5 +1005,37 @@ export declare namespace WikimediaEnterprise {
     type StructuredContentRetrieveResponse as StructuredContentRetrieveResponse,
     type StructuredContentCreateParams as StructuredContentCreateParams,
     type StructuredContentRetrieveParams as StructuredContentRetrieveParams,
+  };
+
+  export {
+    Login as Login,
+    type LoginAuthenticateResponse as LoginAuthenticateResponse,
+    type LoginAuthenticateParams as LoginAuthenticateParams,
+  };
+
+  export {
+    TokenRefresh as TokenRefresh,
+    type TokenRefreshRefreshResponse as TokenRefreshRefreshResponse,
+    type TokenRefreshRefreshParams as TokenRefreshRefreshParams,
+  };
+
+  export { TokenRevoke as TokenRevoke, type TokenRevokeRevokeParams as TokenRevokeRevokeParams };
+
+  export {
+    ForgotPassword as ForgotPassword,
+    type ForgotPasswordSendConfirmationCodeParams as ForgotPasswordSendConfirmationCodeParams,
+  };
+
+  export {
+    ForgotPasswordConfirm as ForgotPasswordConfirm,
+    type ForgotPasswordConfirmConfirmParams as ForgotPasswordConfirmConfirmParams,
+  };
+
+  export { ChangePassword as ChangePassword, type ChangePasswordUpdateParams as ChangePasswordUpdateParams };
+
+  export {
+    NewPasswordRequired as NewPasswordRequired,
+    type NewPasswordRequiredRespondResponse as NewPasswordRequiredRespondResponse,
+    type NewPasswordRequiredRespondParams as NewPasswordRequiredRespondParams,
   };
 }
