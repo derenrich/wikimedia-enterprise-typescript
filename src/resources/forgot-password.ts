@@ -18,6 +18,7 @@ export class ForgotPassword extends APIResource {
   ): APIPromise<void> {
     return this._client.post('/v1/forgot-password', {
       body,
+      defaultBaseURL: 'https://auth.enterprise.wikimedia.com',
       ...options,
       headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
       __security: {},
