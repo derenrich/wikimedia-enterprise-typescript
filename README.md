@@ -26,7 +26,7 @@ The full API of this library can be found in [api.md](api.md).
 import WikimediaEnterprise from 'wikimedia-enterprise';
 
 const client = new WikimediaEnterprise({
-  apiKey: process.env['WIKIMEDIA_ENTERPRISE_API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['WME_ACCESS_TOKEN'], // This is the default and can be omitted
 });
 
 const codes = await client.codes.list();
@@ -41,7 +41,7 @@ This library includes TypeScript definitions for all request params and response
 import WikimediaEnterprise from 'wikimedia-enterprise';
 
 const client = new WikimediaEnterprise({
-  apiKey: process.env['WIKIMEDIA_ENTERPRISE_API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['WME_ACCESS_TOKEN'], // This is the default and can be omitted
 });
 
 const codes: WikimediaEnterprise.CodeListResponse = await client.codes.list();

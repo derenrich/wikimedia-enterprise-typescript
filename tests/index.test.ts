@@ -450,14 +450,14 @@ describe('instantiate client', () => {
 
   test('with environment variable arguments', () => {
     // set options via env var
-    process.env['WIKIMEDIA_ENTERPRISE_API_KEY'] = 'My API Key';
+    process.env['WME_ACCESS_TOKEN'] = 'My API Key';
     const client = new WikimediaEnterprise();
     expect(client.apiKey).toBe('My API Key');
   });
 
   test('with overridden environment variable arguments', () => {
     // set options via env var
-    process.env['WIKIMEDIA_ENTERPRISE_API_KEY'] = 'another My API Key';
+    process.env['WME_ACCESS_TOKEN'] = 'another My API Key';
     const client = new WikimediaEnterprise({ apiKey: 'My API Key' });
     expect(client.apiKey).toBe('My API Key');
   });
