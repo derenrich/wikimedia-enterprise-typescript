@@ -192,3 +192,57 @@ Methods:
 
 - <code title="post /v2/structured-contents/{name}">client.structuredContents.<a href="./src/resources/structured-contents.ts">create</a>(name, { ...params }) -> StructuredContentCreateResponse</code>
 - <code title="get /v2/structured-contents/{name}">client.structuredContents.<a href="./src/resources/structured-contents.ts">retrieve</a>(name, { ...params }) -> StructuredContentRetrieveResponse</code>
+
+# Login
+
+Types:
+
+- <code><a href="./src/resources/login.ts">LoginAuthenticateResponse</a></code>
+
+Methods:
+
+- <code title="post /v1/login">client.login.<a href="./src/resources/login.ts">authenticate</a>({ ...params }) -> LoginAuthenticateResponse</code>
+
+# TokenRefresh
+
+Types:
+
+- <code><a href="./src/resources/token-refresh.ts">TokenRefreshRefreshResponse</a></code>
+
+Methods:
+
+- <code title="post /v1/token-refresh">client.tokenRefresh.<a href="./src/resources/token-refresh.ts">refresh</a>({ ...params }) -> TokenRefreshRefreshResponse</code>
+
+# TokenRevoke
+
+Methods:
+
+- <code title="post /v1/token-revoke">client.tokenRevoke.<a href="./src/resources/token-revoke.ts">revoke</a>({ ...params }) -> void</code>
+
+# ForgotPassword
+
+Methods:
+
+- <code title="post /v1/forgot-password">client.forgotPassword.<a href="./src/resources/forgot-password.ts">sendConfirmationCode</a>({ ...params }) -> void</code>
+
+# ForgotPasswordConfirm
+
+Methods:
+
+- <code title="post /v1/forgot-password-confirm">client.forgotPasswordConfirm.<a href="./src/resources/forgot-password-confirm.ts">confirm</a>({ ...params }) -> void</code>
+
+# ChangePassword
+
+Methods:
+
+- <code title="post /v1/change-password">client.changePassword.<a href="./src/resources/change-password.ts">update</a>({ ...params }) -> void</code>
+
+# NewPasswordRequired
+
+Types:
+
+- <code><a href="./src/resources/new-password-required.ts">NewPasswordRequiredRespondResponse</a></code>
+
+Methods:
+
+- <code title="post /v1/new-password-required">client.newPasswordRequired.<a href="./src/resources/new-password-required.ts">respond</a>({ ...params }) -> NewPasswordRequiredRespondResponse</code>
