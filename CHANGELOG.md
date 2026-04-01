@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.2 (2026-04-01)
+
+Full Changelog: [v0.3.1...v0.3.2](https://github.com/derenrich/wikimedia-enterprise-typescript/compare/v0.3.1...v0.3.2)
+
 ## 0.3.1 (2026-04-01)
 
 Full Changelog: [v0.3.0...v0.3.1](https://github.com/derenrich/wikimedia-enterprise-typescript/compare/v0.3.0...v0.3.1)
