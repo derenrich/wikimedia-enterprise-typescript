@@ -15,7 +15,12 @@ export class TokenRefresh extends APIResource {
     body: TokenRefreshRefreshParams,
     options?: RequestOptions,
   ): APIPromise<TokenRefreshRefreshResponse> {
-    return this._client.post('/v1/token-refresh', { body, ...options, __security: {} });
+    return this._client.post('/v1/token-refresh', {
+      body,
+      defaultBaseURL: 'https://auth.enterprise.wikimedia.com',
+      ...options,
+      __security: {},
+    });
   }
 }
 

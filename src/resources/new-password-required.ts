@@ -15,7 +15,12 @@ export class NewPasswordRequired extends APIResource {
     body: NewPasswordRequiredRespondParams,
     options?: RequestOptions,
   ): APIPromise<NewPasswordRequiredRespondResponse> {
-    return this._client.post('/v1/new-password-required', { body, ...options, __security: {} });
+    return this._client.post('/v1/new-password-required', {
+      body,
+      defaultBaseURL: 'https://auth.enterprise.wikimedia.com',
+      ...options,
+      __security: {},
+    });
   }
 }
 

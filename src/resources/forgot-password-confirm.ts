@@ -15,6 +15,7 @@ export class ForgotPasswordConfirm extends APIResource {
   confirm(body: ForgotPasswordConfirmConfirmParams, options?: RequestOptions): APIPromise<void> {
     return this._client.post('/v1/forgot-password-confirm', {
       body,
+      defaultBaseURL: 'https://auth.enterprise.wikimedia.com',
       ...options,
       headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
       __security: {},
