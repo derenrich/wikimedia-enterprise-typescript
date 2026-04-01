@@ -26,6 +26,7 @@ export {
   type BatchRetrieveByIdentifierParams,
   type BatchUpdateByIdentifierParams,
 } from './batches';
+export { ChangePassword, type ChangePasswordUpdateParams } from './change-password';
 export {
   Codes,
   type Code,
@@ -37,6 +38,8 @@ export {
   type CodeUpdateParams,
   type CodeListParams,
 } from './codes';
+export { ForgotPassword, type ForgotPasswordSendConfirmationCodeParams } from './forgot-password';
+export { ForgotPasswordConfirm, type ForgotPasswordConfirmConfirmParams } from './forgot-password-confirm';
 export {
   Languages,
   type Language,
@@ -47,6 +50,7 @@ export {
   type LanguageUpdateParams,
   type LanguageListParams,
 } from './languages';
+export { Login, type LoginAuthenticateResponse, type LoginAuthenticateParams } from './login';
 export {
   Namespaces,
   type Namespace,
@@ -57,6 +61,11 @@ export {
   type NamespaceUpdateParams,
   type NamespaceListParams,
 } from './namespaces';
+export {
+  NewPasswordRequired,
+  type NewPasswordRequiredRespondResponse,
+  type NewPasswordRequiredRespondParams,
+} from './new-password-required';
 export {
   Projects,
   type Project,
@@ -87,4 +96,10 @@ export {
   type StructuredContentCreateParams,
   type StructuredContentRetrieveParams,
 } from './structured-contents';
+export {
+  TokenRefresh,
+  type TokenRefreshRefreshResponse,
+  type TokenRefreshRefreshParams,
+} from './token-refresh';
+export { TokenRevoke, type TokenRevokeRevokeParams } from './token-revoke';
 export { Wikidata } from './wikidata/wikidata';
