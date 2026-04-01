@@ -4,6 +4,7 @@
   "exclude": [],
   "compilerOptions": {
     "rootDir": "./dist/src",
+    "moduleResolution": "node",
     "paths": {
       "wikimedia-enterprise/*": ["./dist/src/*"],
       "wikimedia-enterprise": ["./dist/src/index.ts"]
