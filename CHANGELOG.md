@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0 (2026-04-01)
+
+Full Changelog: [v0.1.0...v0.2.0](https://github.com/derenrich/wikimedia-enterprise-typescript/compare/v0.1.0...v0.2.0)
+
+### Features
+
+* **api:** specify server for auth ([a6eadbc](https://github.com/derenrich/wikimedia-enterprise-typescript/commit/a6eadbc76d3b859b6065ac3848c67a9d9e4e6bab))
+
 ## 0.1.0 (2026-04-01)
 
 Full Changelog: [v0.0.3...v0.1.0](https://github.com/derenrich/wikimedia-enterprise-typescript/compare/v0.0.3...v0.1.0)
