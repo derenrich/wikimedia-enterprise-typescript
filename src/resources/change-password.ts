@@ -15,6 +15,7 @@ export class ChangePassword extends APIResource {
   update(body: ChangePasswordUpdateParams, options?: RequestOptions): APIPromise<void> {
     return this._client.post('/v1/change-password', {
       body,
+      defaultBaseURL: 'https://auth.enterprise.wikimedia.com',
       ...options,
       headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
       __security: {},

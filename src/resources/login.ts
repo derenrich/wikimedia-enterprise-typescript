@@ -15,7 +15,12 @@ export class Login extends APIResource {
     body: LoginAuthenticateParams,
     options?: RequestOptions,
   ): APIPromise<LoginAuthenticateResponse> {
-    return this._client.post('/v1/login', { body, ...options, __security: {} });
+    return this._client.post('/v1/login', {
+      body,
+      defaultBaseURL: 'https://auth.enterprise.wikimedia.com',
+      ...options,
+      __security: {},
+    });
   }
 }
 

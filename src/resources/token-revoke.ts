@@ -15,6 +15,7 @@ export class TokenRevoke extends APIResource {
   revoke(body: TokenRevokeRevokeParams, options?: RequestOptions): APIPromise<void> {
     return this._client.post('/v1/token-revoke', {
       body,
+      defaultBaseURL: 'https://auth.enterprise.wikimedia.com',
       ...options,
       headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
       __security: {},
