@@ -138,7 +138,7 @@ import { isEmptyObj } from './internal/utils/values';
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['WIKIMEDIA_ENTERPRISE_API_KEY'].
+   * Defaults to process.env['WME_ACCESS_TOKEN'].
    */
   apiKey?: string | undefined;
 
@@ -232,7 +232,7 @@ export class WikimediaEnterprise {
   /**
    * API Client for interfacing with the Wikimedia Enterprise API.
    *
-   * @param {string | undefined} [opts.apiKey=process.env['WIKIMEDIA_ENTERPRISE_API_KEY'] ?? undefined]
+   * @param {string | undefined} [opts.apiKey=process.env['WME_ACCESS_TOKEN'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['WIKIMEDIA_ENTERPRISE_BASE_URL'] ?? https://api.enterprise.wikimedia.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
@@ -243,12 +243,12 @@ export class WikimediaEnterprise {
    */
   constructor({
     baseURL = readEnv('WIKIMEDIA_ENTERPRISE_BASE_URL'),
-    apiKey = readEnv('WIKIMEDIA_ENTERPRISE_API_KEY'),
+    apiKey = readEnv('WME_ACCESS_TOKEN'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
       throw new Errors.WikimediaEnterpriseError(
-        "The WIKIMEDIA_ENTERPRISE_API_KEY environment variable is missing or empty; either provide it, or instantiate the WikimediaEnterprise client with an apiKey option, like new WikimediaEnterprise({ apiKey: 'My API Key' }).",
+        "The WME_ACCESS_TOKEN environment variable is missing or empty; either provide it, or instantiate the WikimediaEnterprise client with an apiKey option, like new WikimediaEnterprise({ apiKey: 'My API Key' }).",
       );
     }
 
