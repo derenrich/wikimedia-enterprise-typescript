@@ -1,5 +1,13 @@
 #!/usr/bin/env node
-const { runCLI } = require('../cli/index.js');
+function loadRunCLI() {
+	try {
+		return require('../cli/index.js').runCLI;
+	} catch (_publishedLayoutErr) {
+		return require('../dist/cli/index.js').runCLI;
+	}
+}
+
+const runCLI = loadRunCLI();
 
 runCLI(process.argv.slice(2), { env: process.env })
 	.then((result) => {
