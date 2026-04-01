@@ -1,31 +1,23 @@
 import WikimediaEnterprise from '../../index';
+import type { CLICommand, CLIResult } from '../types';
 
-export async function list_codes(args: string[]): Promise<void> {
-  let accessToken: string | undefined;
-
-  // check environment variable first
-  if (process.env['WME_ACCESS_TOKEN']) {
-    accessToken = process.env['WME_ACCESS_TOKEN'];
-  }
+export const list_codes: CLICommand = async (_args, context): Promise<CLIResult> => {
+  const accessToken = context.env['WME_ACCESS_TOKEN'];
 
   if (!accessToken) {
-    printUsage();
-    process.exit(1);
+    return { exitCode: 1, stderr: usage() };
   }
 
-  const client = new WikimediaEnterprise();
-
-
-  await client.codes.list(null, { headers: { Authorization: `Bearer ${accessToken}` } }).then((codes) => {
-    console.log(codes);
-  }).catch((err) => {
-    console.error('Error fetching codes:', err);
+  const client = new WikimediaEnterprise({ apiKey: '_' });
+  const codes = await client.codes.list(undefined, {
+    headers: { Authorization: `Bearer ${accessToken}` },
   });
+  return { exitCode: 0, stdout: [JSON.stringify(codes, null, 2)] };
+};
 
+function usage(): string[] {
+  return [
+    'Usage: wikimedia-enterprise list-codes',
+    'Requires WME_ACCESS_TOKEN environment variable to be set (see "login" command)',
+  ];
 }
-
-function printUsage() {
-  console.error('Usage: wikimedia-enterprise list-codes');
-  console.error('Requires WME_ACCESS_TOKEN environment variable to be set (see "login" command)');
-}
-
