@@ -2,6 +2,8 @@
 
 [![NPM version](<https://img.shields.io/npm/v/wikimedia-enterprise.svg?label=npm%20(stable)>)](https://npmjs.org/package/wikimedia-enterprise) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/wikimedia-enterprise)
 
+NOTE: This is not an officially supported library.
+
 This library provides convenient access to the Wikimedia Enterprise REST API from server-side TypeScript or JavaScript.
 
 The full API of this library can be found in [api.md](api.md).
