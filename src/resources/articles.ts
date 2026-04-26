@@ -21,11 +21,7 @@ export class Articles extends APIResource {
    * const articles = await client.articles.create('x');
    * ```
    */
-  create(
-    name: string,
-    body: ArticleCreateParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<ArticleCreateResponse> {
+  create(name: string, body: ArticleCreateParams | null | undefined = {}, options?: RequestOptions): APIPromise<ArticleCreateResponse> {
     return this._client.post(path`/v2/articles/${name}`, { body, ...options });
   }
 
@@ -35,11 +31,7 @@ export class Articles extends APIResource {
    * const articles = await client.articles.retrieve('x');
    * ```
    */
-  retrieve(
-    name: string,
-    query: ArticleRetrieveParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<ArticleRetrieveResponse> {
+  retrieve(name: string, query: ArticleRetrieveParams | null | undefined = {}, options?: RequestOptions): APIPromise<ArticleRetrieveResponse> {
     return this._client.get(path`/v2/articles/${name}`, { query, ...options });
   }
 }
@@ -250,9 +242,9 @@ export interface Visibility {
   user?: boolean;
 }
 
-export type ArticleCreateResponse = Array<Article>;
+export type ArticleCreateResponse = Array<Article>
 
-export type ArticleRetrieveResponse = Array<Article>;
+export type ArticleRetrieveResponse = Array<Article>
 
 export interface ArticleCreateParams {
   /**
@@ -300,6 +292,6 @@ export declare namespace Articles {
     type ArticleCreateResponse as ArticleCreateResponse,
     type ArticleRetrieveResponse as ArticleRetrieveResponse,
     type ArticleCreateParams as ArticleCreateParams,
-    type ArticleRetrieveParams as ArticleRetrieveParams,
+    type ArticleRetrieveParams as ArticleRetrieveParams
   };
 }

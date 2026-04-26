@@ -11,16 +11,8 @@ export class Login extends APIResource {
   /**
    * Create new access, id, and refresh tokens with your valid username and password.
    */
-  authenticate(
-    body: LoginAuthenticateParams,
-    options?: RequestOptions,
-  ): APIPromise<LoginAuthenticateResponse> {
-    return this._client.post('/v1/login', {
-      body,
-      defaultBaseURL: 'https://auth.enterprise.wikimedia.com',
-      ...options,
-      __security: {},
-    });
+  authenticate(body: LoginAuthenticateParams, options?: RequestOptions): APIPromise<LoginAuthenticateResponse> {
+    return this._client.post('/v1/login', { body, defaultBaseURL: 'https://auth.enterprise.wikimedia.com', ...options, __security: {  } });
   }
 }
 
@@ -43,6 +35,6 @@ export interface LoginAuthenticateParams {
 export declare namespace Login {
   export {
     type LoginAuthenticateResponse as LoginAuthenticateResponse,
-    type LoginAuthenticateParams as LoginAuthenticateParams,
+    type LoginAuthenticateParams as LoginAuthenticateParams
   };
 }

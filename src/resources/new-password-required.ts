@@ -11,16 +11,8 @@ export class NewPasswordRequired extends APIResource {
   /**
    * Responds to the NEW_PASSWORD_REQUIRED challenge.
    */
-  respond(
-    body: NewPasswordRequiredRespondParams,
-    options?: RequestOptions,
-  ): APIPromise<NewPasswordRequiredRespondResponse> {
-    return this._client.post('/v1/new-password-required', {
-      body,
-      defaultBaseURL: 'https://auth.enterprise.wikimedia.com',
-      ...options,
-      __security: {},
-    });
+  respond(body: NewPasswordRequiredRespondParams, options?: RequestOptions): APIPromise<NewPasswordRequiredRespondResponse> {
+    return this._client.post('/v1/new-password-required', { body, defaultBaseURL: 'https://auth.enterprise.wikimedia.com', ...options, __security: {  } });
   }
 }
 
@@ -47,6 +39,6 @@ export interface NewPasswordRequiredRespondParams {
 export declare namespace NewPasswordRequired {
   export {
     type NewPasswordRequiredRespondResponse as NewPasswordRequiredRespondResponse,
-    type NewPasswordRequiredRespondParams as NewPasswordRequiredRespondParams,
+    type NewPasswordRequiredRespondParams as NewPasswordRequiredRespondParams
   };
 }

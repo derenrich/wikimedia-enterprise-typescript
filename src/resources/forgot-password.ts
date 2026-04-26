@@ -12,17 +12,8 @@ export class ForgotPassword extends APIResource {
   /**
    * Sends a confirmation code via email.
    */
-  sendConfirmationCode(
-    body: ForgotPasswordSendConfirmationCodeParams,
-    options?: RequestOptions,
-  ): APIPromise<void> {
-    return this._client.post('/v1/forgot-password', {
-      body,
-      defaultBaseURL: 'https://auth.enterprise.wikimedia.com',
-      ...options,
-      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
-      __security: {},
-    });
+  sendConfirmationCode(body: ForgotPasswordSendConfirmationCodeParams, options?: RequestOptions): APIPromise<void> {
+    return this._client.post('/v1/forgot-password', { body, defaultBaseURL: 'https://auth.enterprise.wikimedia.com', ...options, headers: buildHeaders([{Accept: '*/*'}, options?.headers]), __security: {  } });
   }
 }
 
@@ -31,5 +22,7 @@ export interface ForgotPasswordSendConfirmationCodeParams {
 }
 
 export declare namespace ForgotPassword {
-  export { type ForgotPasswordSendConfirmationCodeParams as ForgotPasswordSendConfirmationCodeParams };
+  export {
+    type ForgotPasswordSendConfirmationCodeParams as ForgotPasswordSendConfirmationCodeParams
+  };
 }

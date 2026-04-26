@@ -21,11 +21,7 @@ export class StructuredContents extends APIResource {
    *   await client.structuredContents.create('x');
    * ```
    */
-  create(
-    name: string,
-    body: StructuredContentCreateParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<StructuredContentCreateResponse> {
+  create(name: string, body: StructuredContentCreateParams | null | undefined = {}, options?: RequestOptions): APIPromise<StructuredContentCreateResponse> {
     return this._client.post(path`/v2/structured-contents/${name}`, { body, ...options });
   }
 
@@ -36,11 +32,7 @@ export class StructuredContents extends APIResource {
    *   await client.structuredContents.retrieve('x');
    * ```
    */
-  retrieve(
-    name: string,
-    query: StructuredContentRetrieveParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<StructuredContentRetrieveResponse> {
+  retrieve(name: string, query: StructuredContentRetrieveParams | null | undefined = {}, options?: RequestOptions): APIPromise<StructuredContentRetrieveResponse> {
     return this._client.get(path`/v2/structured-contents/${name}`, { query, ...options });
   }
 }
@@ -147,9 +139,9 @@ export namespace StructuredContent {
   }
 }
 
-export type StructuredContentCreateResponse = Array<StructuredContent>;
+export type StructuredContentCreateResponse = Array<StructuredContent>
 
-export type StructuredContentRetrieveResponse = Array<StructuredContent>;
+export type StructuredContentRetrieveResponse = Array<StructuredContent>
 
 export interface StructuredContentCreateParams {
   /**
@@ -192,6 +184,6 @@ export declare namespace StructuredContents {
     type StructuredContentCreateResponse as StructuredContentCreateResponse,
     type StructuredContentRetrieveResponse as StructuredContentRetrieveResponse,
     type StructuredContentCreateParams as StructuredContentCreateParams,
-    type StructuredContentRetrieveParams as StructuredContentRetrieveParams,
+    type StructuredContentRetrieveParams as StructuredContentRetrieveParams
   };
 }
