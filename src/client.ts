@@ -17,123 +17,27 @@ import * as Errors from './core/error';
 import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
-import {
-  Article,
-  ArticleCreateParams,
-  ArticleCreateResponse,
-  ArticleRetrieveParams,
-  ArticleRetrieveResponse,
-  Articles,
-  Entity,
-  Event,
-  Link,
-  Part,
-  Version,
-  Visibility,
-} from './resources/articles';
-import {
-  Batch,
-  BatchCreateParams,
-  BatchCreateResponse,
-  BatchDownloadByIdentifierParams,
-  BatchRetrieveByIdentifierParams,
-  BatchRetrieveParams,
-  BatchRetrieveResponse,
-  BatchUpdateByIdentifierParams,
-  Batches,
-  Size,
-} from './resources/batches';
+import { Article, ArticleCreateParams, ArticleCreateResponse, ArticleRetrieveParams, ArticleRetrieveResponse, Articles, Entity, Event, Link, Part, Version, Visibility } from './resources/articles';
+import { Batch, BatchCreateParams, BatchCreateResponse, BatchDownloadByIdentifierParams, BatchRetrieveByIdentifierParams, BatchRetrieveParams, BatchRetrieveResponse, BatchUpdateByIdentifierParams, Batches, Size } from './resources/batches';
 import { ChangePassword, ChangePasswordUpdateParams } from './resources/change-password';
-import {
-  Code,
-  CodeCreateParams,
-  CodeCreateResponse,
-  CodeListParams,
-  CodeListResponse,
-  CodeRetrieveParams,
-  CodeUpdateParams,
-  Codes,
-  Filter,
-} from './resources/codes';
+import { Code, CodeCreateParams, CodeCreateResponse, CodeListParams, CodeListResponse, CodeRetrieveParams, CodeUpdateParams, Codes, Filter } from './resources/codes';
 import { ForgotPassword, ForgotPasswordSendConfirmationCodeParams } from './resources/forgot-password';
-import {
-  ForgotPasswordConfirm,
-  ForgotPasswordConfirmConfirmParams,
-} from './resources/forgot-password-confirm';
-import {
-  Language,
-  LanguageCreateParams,
-  LanguageCreateResponse,
-  LanguageListParams,
-  LanguageListResponse,
-  LanguageRetrieveParams,
-  LanguageUpdateParams,
-  Languages,
-} from './resources/languages';
+import { ForgotPasswordConfirm, ForgotPasswordConfirmConfirmParams } from './resources/forgot-password-confirm';
+import { Language, LanguageCreateParams, LanguageCreateResponse, LanguageListParams, LanguageListResponse, LanguageRetrieveParams, LanguageUpdateParams, Languages } from './resources/languages';
 import { Login, LoginAuthenticateParams, LoginAuthenticateResponse } from './resources/login';
-import {
-  Namespace,
-  NamespaceCreateParams,
-  NamespaceCreateResponse,
-  NamespaceListParams,
-  NamespaceListResponse,
-  NamespaceRetrieveParams,
-  NamespaceUpdateParams,
-  Namespaces,
-} from './resources/namespaces';
-import {
-  NewPasswordRequired,
-  NewPasswordRequiredRespondParams,
-  NewPasswordRequiredRespondResponse,
-} from './resources/new-password-required';
-import {
-  Project,
-  ProjectCreateParams,
-  ProjectCreateResponse,
-  ProjectListParams,
-  ProjectListResponse,
-  ProjectRetrieveParams,
-  ProjectUpdateParams,
-  Projects,
-} from './resources/projects';
-import {
-  Image,
-  StructuredContent,
-  StructuredContentCreateParams,
-  StructuredContentCreateResponse,
-  StructuredContentRetrieveParams,
-  StructuredContentRetrieveResponse,
-  StructuredContents,
-} from './resources/structured-contents';
-import {
-  TokenRefresh,
-  TokenRefreshRefreshParams,
-  TokenRefreshRefreshResponse,
-} from './resources/token-refresh';
+import { Namespace, NamespaceCreateParams, NamespaceCreateResponse, NamespaceListParams, NamespaceListResponse, NamespaceRetrieveParams, NamespaceUpdateParams, Namespaces } from './resources/namespaces';
+import { NewPasswordRequired, NewPasswordRequiredRespondParams, NewPasswordRequiredRespondResponse } from './resources/new-password-required';
+import { Project, ProjectCreateParams, ProjectCreateResponse, ProjectListParams, ProjectListResponse, ProjectRetrieveParams, ProjectUpdateParams, Projects } from './resources/projects';
+import { Image, StructuredContent, StructuredContentCreateParams, StructuredContentCreateResponse, StructuredContentRetrieveParams, StructuredContentRetrieveResponse, StructuredContents } from './resources/structured-contents';
+import { TokenRefresh, TokenRefreshRefreshParams, TokenRefreshRefreshResponse } from './resources/token-refresh';
 import { TokenRevoke, TokenRevokeRevokeParams } from './resources/token-revoke';
-import {
-  Snapshot,
-  SnapshotCreateParams,
-  SnapshotCreateResponse,
-  SnapshotDownloadParams,
-  SnapshotListParams,
-  SnapshotListResponse,
-  SnapshotRetrieveParams,
-  SnapshotUpdateParams,
-  Snapshots,
-} from './resources/snapshots/snapshots';
+import { Snapshot, SnapshotCreateParams, SnapshotCreateResponse, SnapshotDownloadParams, SnapshotListParams, SnapshotListResponse, SnapshotRetrieveParams, SnapshotUpdateParams, Snapshots } from './resources/snapshots/snapshots';
 import { Wikidata } from './resources/wikidata/wikidata';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
 import { readEnv } from './internal/utils/env';
-import {
-  type LogLevel,
-  type Logger,
-  formatRequestDetails,
-  loggerFor,
-  parseLogLevel,
-} from './internal/utils/log';
+import { type LogLevel, type Logger, formatRequestDetails, loggerFor, parseLogLevel } from './internal/utils/log';
 import { isEmptyObj } from './internal/utils/values';
 
 export interface ClientOptions {
@@ -212,7 +116,7 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Wikimedia Enterprise API.
+ * API Client for interfacing with the Wikimedia Enterprise API. 
  */
 export class WikimediaEnterprise {
   apiKey: string;
@@ -248,7 +152,7 @@ export class WikimediaEnterprise {
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
       throw new Errors.WikimediaEnterpriseError(
-        "The WME_ACCESS_TOKEN environment variable is missing or empty; either provide it, or instantiate the WikimediaEnterprise client with an apiKey option, like new WikimediaEnterprise({ apiKey: 'My API Key' }).",
+        'The WME_ACCESS_TOKEN environment variable is missing or empty; either provide it, or instantiate the WikimediaEnterprise client with an apiKey option, like new WikimediaEnterprise({ apiKey: \'My API Key\' }).'
       );
     }
 
@@ -264,10 +168,7 @@ export class WikimediaEnterprise {
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
     this.logLevel = defaultLogLevel;
-    this.logLevel =
-      parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ??
-      parseLogLevel(readEnv('WIKIMEDIA_ENTERPRISE_LOG'), "process.env['WIKIMEDIA_ENTERPRISE_LOG']", this) ??
-      defaultLogLevel;
+    this.logLevel = parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ?? parseLogLevel(readEnv('WIKIMEDIA_ENTERPRISE_LOG'), 'process.env[\'WIKIMEDIA_ENTERPRISE_LOG\']', this) ?? defaultLogLevel;
     this.fetchOptions = options.fetchOptions;
     this.maxRetries = options.maxRetries ?? 2;
     this.fetch = options.fetch ?? Shims.getDefaultFetch();
@@ -292,7 +193,7 @@ export class WikimediaEnterprise {
       fetch: this.fetch,
       fetchOptions: this.fetchOptions,
       apiKey: this.apiKey,
-      ...options,
+      ...options
     });
     return client;
   }
@@ -305,17 +206,14 @@ export class WikimediaEnterprise {
   }
 
   protected defaultQuery(): Record<string, string | undefined> | undefined {
-    return this._options.defaultQuery;
+    return this._options.defaultQuery
   }
 
   protected validateHeaders({ values, nulls }: NullableHeaders) {
     return;
   }
 
-  protected async authHeaders(
-    opts: FinalRequestOptions,
-    schemes: { bearerAuth?: boolean },
-  ): Promise<NullableHeaders | undefined> {
+  protected async authHeaders(opts: FinalRequestOptions, schemes: { bearerAuth?: boolean }): Promise<NullableHeaders | undefined> {
     return buildHeaders([schemes.bearerAuth ? await this.bearerAuth(opts) : null]);
   }
 
@@ -344,11 +242,7 @@ export class WikimediaEnterprise {
     return Errors.APIError.generate(status, error, message, headers);
   }
 
-  buildURL(
-    path: string,
-    query: Record<string, unknown> | null | undefined,
-    defaultBaseURL?: string | undefined,
-  ): string {
+  buildURL(path: string, query: Record<string, unknown> | null | undefined, defaultBaseURL?: string | undefined): string {
     const baseURL = (!this.#baseURLOverridden() && defaultBaseURL) || this.baseURL;
     const url =
       isAbsoluteURL(path) ?
@@ -436,9 +330,7 @@ export class WikimediaEnterprise {
 
     await this.prepareOptions(options);
 
-    const { req, url, timeout } = await this.buildRequest(options, {
-      retryCount: maxRetries - retriesRemaining,
-    });
+    const { req, url, timeout } = await this.buildRequest(options, { retryCount: maxRetries - retriesRemaining });
 
     await this.prepareRequest(req, { url, options });
 
@@ -447,16 +339,7 @@ export class WikimediaEnterprise {
     const retryLogStr = retryOfRequestLogID === undefined ? '' : `, retryOf: ${retryOfRequestLogID}`;
     const startTime = Date.now();
 
-    loggerFor(this).debug(
-      `[${requestLogID}] sending request`,
-      formatRequestDetails({
-        retryOfRequestLogID,
-        method: options.method,
-        url,
-        options,
-        headers: req.headers,
-      }),
-    );
+    loggerFor(this).debug(`[${requestLogID}] sending request`, formatRequestDetails({ retryOfRequestLogID, method: options.method, url, options, headers: req.headers }));
 
     if (options.signal?.aborted) {
       throw new Errors.APIUserAbortError();
@@ -475,45 +358,21 @@ export class WikimediaEnterprise {
       // deno throws "TypeError: error sending request for url (https://example/): client error (Connect): tcp connect error: Operation timed out (os error 60): Operation timed out (os error 60)"
       // undici throws "TypeError: fetch failed" with cause "ConnectTimeoutError: Connect Timeout Error (attempted address: example:443, timeout: 1ms)"
       // others do not provide enough information to distinguish timeouts from other connection errors
-      const isTimeout =
-        isAbortError(response) ||
-        /timed? ?out/i.test(String(response) + ('cause' in response ? String(response.cause) : ''));
+      const isTimeout = isAbortError(response) || /timed? ?out/i.test(String(response) + ('cause' in response ? String(response.cause) : ''))
       if (retriesRemaining) {
-        loggerFor(this).info(
-          `[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} - ${retryMessage}`,
-        );
-        loggerFor(this).debug(
-          `[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} (${retryMessage})`,
-          formatRequestDetails({
-            retryOfRequestLogID,
-            url,
-            durationMs: headersTime - startTime,
-            message: response.message,
-          }),
-        );
+        loggerFor(this).info(`[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} - ${retryMessage}`)
+        loggerFor(this).debug(`[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} (${retryMessage})`, formatRequestDetails({ retryOfRequestLogID, url, durationMs: headersTime - startTime, message: response.message }));
         return this.retryRequest(options, retriesRemaining, retryOfRequestLogID ?? requestLogID);
       }
-      loggerFor(this).info(
-        `[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} - error; no more retries left`,
-      );
-      loggerFor(this).debug(
-        `[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} (error; no more retries left)`,
-        formatRequestDetails({
-          retryOfRequestLogID,
-          url,
-          durationMs: headersTime - startTime,
-          message: response.message,
-        }),
-      );
+      loggerFor(this).info(`[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} - error; no more retries left`)
+      loggerFor(this).debug(`[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} (error; no more retries left)`, formatRequestDetails({ retryOfRequestLogID, url, durationMs: headersTime - startTime, message: response.message }));
       if (isTimeout) {
         throw new Errors.APIConnectionTimeoutError();
       }
       throw new Errors.APIConnectionError({ cause: response });
     }
 
-    const responseInfo = `[${requestLogID}${retryLogStr}] ${req.method} ${url} ${
-      response.ok ? 'succeeded' : 'failed'
-    } with status ${response.status} in ${headersTime - startTime}ms`;
+    const responseInfo = `[${requestLogID}${retryLogStr}] ${req.method} ${url} ${response.ok ? 'succeeded' : 'failed'} with status ${response.status} in ${headersTime - startTime}ms`;
 
     if (!response.ok) {
       const shouldRetry = await this.shouldRetry(response);
@@ -522,60 +381,27 @@ export class WikimediaEnterprise {
 
         // We don't need the body of this response.
         await Shims.CancelReadableStream(response.body);
-        loggerFor(this).info(`${responseInfo} - ${retryMessage}`);
-        loggerFor(this).debug(
-          `[${requestLogID}] response error (${retryMessage})`,
-          formatRequestDetails({
-            retryOfRequestLogID,
-            url: response.url,
-            status: response.status,
-            headers: response.headers,
-            durationMs: headersTime - startTime,
-          }),
-        );
-        return this.retryRequest(
-          options,
-          retriesRemaining,
-          retryOfRequestLogID ?? requestLogID,
-          response.headers,
-        );
+        loggerFor(this).info(`${responseInfo} - ${retryMessage}`)
+        loggerFor(this).debug(`[${requestLogID}] response error (${retryMessage})`, formatRequestDetails({ retryOfRequestLogID, url: response.url, status: response.status, headers: response.headers, durationMs: headersTime - startTime }));
+        return this.retryRequest(options, retriesRemaining, retryOfRequestLogID ?? requestLogID, response.headers);
       }
 
       const retryMessage = shouldRetry ? `error; no more retries left` : `error; not retryable`;
 
-      loggerFor(this).info(`${responseInfo} - ${retryMessage}`);
+      loggerFor(this).info(`${responseInfo} - ${retryMessage}`)
 
       const errText = await response.text().catch((err: any) => castToError(err).message);
       const errJSON = safeJSON(errText) as any;
       const errMessage = errJSON ? undefined : errText;
 
-      loggerFor(this).debug(
-        `[${requestLogID}] response error (${retryMessage})`,
-        formatRequestDetails({
-          retryOfRequestLogID,
-          url: response.url,
-          status: response.status,
-          headers: response.headers,
-          message: errMessage,
-          durationMs: Date.now() - startTime,
-        }),
-      );
+      loggerFor(this).debug(`[${requestLogID}] response error (${retryMessage})`, formatRequestDetails({ retryOfRequestLogID, url: response.url, status: response.status, headers: response.headers, message: errMessage, durationMs: Date.now() - startTime }));
 
       const err = this.makeStatusError(response.status, errJSON, errMessage, response.headers);
       throw err;
     }
 
-    loggerFor(this).info(responseInfo);
-    loggerFor(this).debug(
-      `[${requestLogID}] response start`,
-      formatRequestDetails({
-        retryOfRequestLogID,
-        url: response.url,
-        status: response.status,
-        headers: response.headers,
-        durationMs: headersTime - startTime,
-      }),
-    );
+    loggerFor(this).info(responseInfo)
+    loggerFor(this).debug(`[${requestLogID}] response start`, formatRequestDetails({ retryOfRequestLogID, url: response.url, status: response.status, headers: response.headers, durationMs: headersTime - startTime }));
 
     return { response, options, controller, requestLogID, retryOfRequestLogID, startTime };
   }
@@ -592,9 +418,7 @@ export class WikimediaEnterprise {
 
     const timeout = setTimeout(abort, ms);
 
-    const isReadableBody =
-      ((globalThis as any).ReadableStream && options.body instanceof (globalThis as any).ReadableStream) ||
-      (typeof options.body === 'object' && options.body !== null && Symbol.asyncIterator in options.body);
+    const isReadableBody = ((globalThis as any).ReadableStream && options.body instanceof (globalThis as any).ReadableStream) || (typeof options.body === "object" && options.body !== null && Symbol.asyncIterator in options.body);
 
     const fetchOptions: RequestInit = {
       signal: controller.signal as any,
@@ -609,6 +433,7 @@ export class WikimediaEnterprise {
     }
 
     try {
+
       // use undefined this binding; fetch errors if bound to something else in browser/cloudflare
       return await this.fetch.call(undefined, url, fetchOptions);
     } finally {
@@ -709,12 +534,11 @@ export class WikimediaEnterprise {
     const req: FinalizedRequestInit = {
       method,
       headers: reqHeaders,
-      ...(options.signal && { signal: options.signal }),
-      ...((globalThis as any).ReadableStream &&
-        body instanceof (globalThis as any).ReadableStream && { duplex: 'half' }),
+      ...(options.signal && { signal: options.signal}),
+      ...((globalThis as any).ReadableStream && body instanceof (globalThis as any).ReadableStream && { duplex: "half" }),
       ...(body && { body }),
-      ...((this.fetchOptions as any) ?? {}),
-      ...((options.fetchOptions as any) ?? {}),
+      ...(this.fetchOptions as any ?? {}),
+      ...(options.fetchOptions as any ?? {}),
     };
 
     return { req, url, timeout: options.timeout };
@@ -739,17 +563,15 @@ export class WikimediaEnterprise {
 
     const headers = buildHeaders([
       idempotencyHeaders,
-      {
-        Accept: 'application/json',
-        'User-Agent': this.getUserAgent(),
-        'X-Stainless-Retry-Count': String(retryCount),
-        ...(options.timeout ? { 'X-Stainless-Timeout': String(Math.trunc(options.timeout / 1000)) } : {}),
-        ...getPlatformHeaders(),
-      },
+      {Accept: 'application/json',
+      'User-Agent': this.getUserAgent(),
+      'X-Stainless-Retry-Count': String(retryCount),
+      ...(options.timeout ? { 'X-Stainless-Timeout': String(Math.trunc(options.timeout / 1000)) } : {}),
+      ...getPlatformHeaders()},
       await this.authHeaders(options, options.__security ?? { bearerAuth: true }),
       this._options.defaultHeaders,
       bodyHeaders,
-      options.headers,
+      options.headers
     ]);
 
     this.validateHeaders(headers);
@@ -776,9 +598,11 @@ export class WikimediaEnterprise {
       ArrayBuffer.isView(body) ||
       body instanceof ArrayBuffer ||
       body instanceof DataView ||
-      (typeof body === 'string' &&
+      (
+        typeof body === 'string' &&
         // Preserve legacy string encoding behavior for now
-        headers.values.has('content-type')) ||
+        headers.values.has('content-type')
+      ) ||
       // `Blob` is superset of `File`
       ((globalThis as any).Blob && body instanceof (globalThis as any).Blob) ||
       // `FormData` -> `multipart/form-data`
@@ -809,7 +633,7 @@ export class WikimediaEnterprise {
   }
 
   static WikimediaEnterprise = this;
-  static DEFAULT_TIMEOUT = 60000; // 1 minute
+  static DEFAULT_TIMEOUT = 60000 // 1 minute
 
   static WikimediaEnterpriseError = Errors.WikimediaEnterpriseError;
   static APIError = Errors.APIError;
@@ -908,134 +732,142 @@ WikimediaEnterprise.ChangePassword = ChangePassword;
 WikimediaEnterprise.NewPasswordRequired = NewPasswordRequired;
 
 export declare namespace WikimediaEnterprise {
-  export type RequestOptions = Opts.RequestOptions;
+      export type RequestOptions = Opts.RequestOptions;
 
-  export {
-    Codes as Codes,
-    type Code as Code,
-    type Filter as Filter,
-    type CodeCreateResponse as CodeCreateResponse,
-    type CodeListResponse as CodeListResponse,
-    type CodeCreateParams as CodeCreateParams,
-    type CodeRetrieveParams as CodeRetrieveParams,
-    type CodeUpdateParams as CodeUpdateParams,
-    type CodeListParams as CodeListParams,
-  };
+      export {
+  Codes as Codes,
+  type Code as Code,
+  type Filter as Filter,
+  type CodeCreateResponse as CodeCreateResponse,
+  type CodeListResponse as CodeListResponse,
+  type CodeCreateParams as CodeCreateParams,
+  type CodeRetrieveParams as CodeRetrieveParams,
+  type CodeUpdateParams as CodeUpdateParams,
+  type CodeListParams as CodeListParams
+};
 
-  export {
-    Languages as Languages,
-    type Language as Language,
-    type LanguageCreateResponse as LanguageCreateResponse,
-    type LanguageListResponse as LanguageListResponse,
-    type LanguageCreateParams as LanguageCreateParams,
-    type LanguageRetrieveParams as LanguageRetrieveParams,
-    type LanguageUpdateParams as LanguageUpdateParams,
-    type LanguageListParams as LanguageListParams,
-  };
+export {
+  Languages as Languages,
+  type Language as Language,
+  type LanguageCreateResponse as LanguageCreateResponse,
+  type LanguageListResponse as LanguageListResponse,
+  type LanguageCreateParams as LanguageCreateParams,
+  type LanguageRetrieveParams as LanguageRetrieveParams,
+  type LanguageUpdateParams as LanguageUpdateParams,
+  type LanguageListParams as LanguageListParams
+};
 
-  export {
-    Projects as Projects,
-    type Project as Project,
-    type ProjectCreateResponse as ProjectCreateResponse,
-    type ProjectListResponse as ProjectListResponse,
-    type ProjectCreateParams as ProjectCreateParams,
-    type ProjectRetrieveParams as ProjectRetrieveParams,
-    type ProjectUpdateParams as ProjectUpdateParams,
-    type ProjectListParams as ProjectListParams,
-  };
+export {
+  Projects as Projects,
+  type Project as Project,
+  type ProjectCreateResponse as ProjectCreateResponse,
+  type ProjectListResponse as ProjectListResponse,
+  type ProjectCreateParams as ProjectCreateParams,
+  type ProjectRetrieveParams as ProjectRetrieveParams,
+  type ProjectUpdateParams as ProjectUpdateParams,
+  type ProjectListParams as ProjectListParams
+};
 
-  export {
-    Namespaces as Namespaces,
-    type Namespace as Namespace,
-    type NamespaceCreateResponse as NamespaceCreateResponse,
-    type NamespaceListResponse as NamespaceListResponse,
-    type NamespaceCreateParams as NamespaceCreateParams,
-    type NamespaceRetrieveParams as NamespaceRetrieveParams,
-    type NamespaceUpdateParams as NamespaceUpdateParams,
-    type NamespaceListParams as NamespaceListParams,
-  };
+export {
+  Namespaces as Namespaces,
+  type Namespace as Namespace,
+  type NamespaceCreateResponse as NamespaceCreateResponse,
+  type NamespaceListResponse as NamespaceListResponse,
+  type NamespaceCreateParams as NamespaceCreateParams,
+  type NamespaceRetrieveParams as NamespaceRetrieveParams,
+  type NamespaceUpdateParams as NamespaceUpdateParams,
+  type NamespaceListParams as NamespaceListParams
+};
 
-  export {
-    Batches as Batches,
-    type Batch as Batch,
-    type Size as Size,
-    type BatchCreateResponse as BatchCreateResponse,
-    type BatchRetrieveResponse as BatchRetrieveResponse,
-    type BatchCreateParams as BatchCreateParams,
-    type BatchRetrieveParams as BatchRetrieveParams,
-    type BatchDownloadByIdentifierParams as BatchDownloadByIdentifierParams,
-    type BatchRetrieveByIdentifierParams as BatchRetrieveByIdentifierParams,
-    type BatchUpdateByIdentifierParams as BatchUpdateByIdentifierParams,
-  };
+export {
+  Batches as Batches,
+  type Batch as Batch,
+  type Size as Size,
+  type BatchCreateResponse as BatchCreateResponse,
+  type BatchRetrieveResponse as BatchRetrieveResponse,
+  type BatchCreateParams as BatchCreateParams,
+  type BatchRetrieveParams as BatchRetrieveParams,
+  type BatchDownloadByIdentifierParams as BatchDownloadByIdentifierParams,
+  type BatchRetrieveByIdentifierParams as BatchRetrieveByIdentifierParams,
+  type BatchUpdateByIdentifierParams as BatchUpdateByIdentifierParams
+};
 
-  export {
-    Snapshots as Snapshots,
-    type Snapshot as Snapshot,
-    type SnapshotCreateResponse as SnapshotCreateResponse,
-    type SnapshotListResponse as SnapshotListResponse,
-    type SnapshotCreateParams as SnapshotCreateParams,
-    type SnapshotRetrieveParams as SnapshotRetrieveParams,
-    type SnapshotUpdateParams as SnapshotUpdateParams,
-    type SnapshotListParams as SnapshotListParams,
-    type SnapshotDownloadParams as SnapshotDownloadParams,
-  };
+export {
+  Snapshots as Snapshots,
+  type Snapshot as Snapshot,
+  type SnapshotCreateResponse as SnapshotCreateResponse,
+  type SnapshotListResponse as SnapshotListResponse,
+  type SnapshotCreateParams as SnapshotCreateParams,
+  type SnapshotRetrieveParams as SnapshotRetrieveParams,
+  type SnapshotUpdateParams as SnapshotUpdateParams,
+  type SnapshotListParams as SnapshotListParams,
+  type SnapshotDownloadParams as SnapshotDownloadParams
+};
 
-  export {
-    Articles as Articles,
-    type Article as Article,
-    type Entity as Entity,
-    type Event as Event,
-    type Link as Link,
-    type Part as Part,
-    type Version as Version,
-    type Visibility as Visibility,
-    type ArticleCreateResponse as ArticleCreateResponse,
-    type ArticleRetrieveResponse as ArticleRetrieveResponse,
-    type ArticleCreateParams as ArticleCreateParams,
-    type ArticleRetrieveParams as ArticleRetrieveParams,
-  };
+export {
+  Articles as Articles,
+  type Article as Article,
+  type Entity as Entity,
+  type Event as Event,
+  type Link as Link,
+  type Part as Part,
+  type Version as Version,
+  type Visibility as Visibility,
+  type ArticleCreateResponse as ArticleCreateResponse,
+  type ArticleRetrieveResponse as ArticleRetrieveResponse,
+  type ArticleCreateParams as ArticleCreateParams,
+  type ArticleRetrieveParams as ArticleRetrieveParams
+};
 
-  export { Wikidata as Wikidata };
+export {
+  Wikidata as Wikidata
+};
 
-  export {
-    StructuredContents as StructuredContents,
-    type Image as Image,
-    type StructuredContent as StructuredContent,
-    type StructuredContentCreateResponse as StructuredContentCreateResponse,
-    type StructuredContentRetrieveResponse as StructuredContentRetrieveResponse,
-    type StructuredContentCreateParams as StructuredContentCreateParams,
-    type StructuredContentRetrieveParams as StructuredContentRetrieveParams,
-  };
+export {
+  StructuredContents as StructuredContents,
+  type Image as Image,
+  type StructuredContent as StructuredContent,
+  type StructuredContentCreateResponse as StructuredContentCreateResponse,
+  type StructuredContentRetrieveResponse as StructuredContentRetrieveResponse,
+  type StructuredContentCreateParams as StructuredContentCreateParams,
+  type StructuredContentRetrieveParams as StructuredContentRetrieveParams
+};
 
-  export {
-    Login as Login,
-    type LoginAuthenticateResponse as LoginAuthenticateResponse,
-    type LoginAuthenticateParams as LoginAuthenticateParams,
-  };
+export {
+  Login as Login,
+  type LoginAuthenticateResponse as LoginAuthenticateResponse,
+  type LoginAuthenticateParams as LoginAuthenticateParams
+};
 
-  export {
-    TokenRefresh as TokenRefresh,
-    type TokenRefreshRefreshResponse as TokenRefreshRefreshResponse,
-    type TokenRefreshRefreshParams as TokenRefreshRefreshParams,
-  };
+export {
+  TokenRefresh as TokenRefresh,
+  type TokenRefreshRefreshResponse as TokenRefreshRefreshResponse,
+  type TokenRefreshRefreshParams as TokenRefreshRefreshParams
+};
 
-  export { TokenRevoke as TokenRevoke, type TokenRevokeRevokeParams as TokenRevokeRevokeParams };
+export {
+  TokenRevoke as TokenRevoke,
+  type TokenRevokeRevokeParams as TokenRevokeRevokeParams
+};
 
-  export {
-    ForgotPassword as ForgotPassword,
-    type ForgotPasswordSendConfirmationCodeParams as ForgotPasswordSendConfirmationCodeParams,
-  };
+export {
+  ForgotPassword as ForgotPassword,
+  type ForgotPasswordSendConfirmationCodeParams as ForgotPasswordSendConfirmationCodeParams
+};
 
-  export {
-    ForgotPasswordConfirm as ForgotPasswordConfirm,
-    type ForgotPasswordConfirmConfirmParams as ForgotPasswordConfirmConfirmParams,
-  };
+export {
+  ForgotPasswordConfirm as ForgotPasswordConfirm,
+  type ForgotPasswordConfirmConfirmParams as ForgotPasswordConfirmConfirmParams
+};
 
-  export { ChangePassword as ChangePassword, type ChangePasswordUpdateParams as ChangePasswordUpdateParams };
+export {
+  ChangePassword as ChangePassword,
+  type ChangePasswordUpdateParams as ChangePasswordUpdateParams
+};
 
-  export {
-    NewPasswordRequired as NewPasswordRequired,
-    type NewPasswordRequiredRespondResponse as NewPasswordRequiredRespondResponse,
-    type NewPasswordRequiredRespondParams as NewPasswordRequiredRespondParams,
-  };
-}
+export {
+  NewPasswordRequired as NewPasswordRequired,
+  type NewPasswordRequiredRespondResponse as NewPasswordRequiredRespondResponse,
+  type NewPasswordRequiredRespondParams as NewPasswordRequiredRespondParams
+};
+    }

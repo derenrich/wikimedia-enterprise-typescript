@@ -16,10 +16,7 @@ export class Languages extends APIResource {
    * const languages = await client.languages.create();
    * ```
    */
-  create(
-    body: LanguageCreateParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<LanguageCreateResponse> {
+  create(body: LanguageCreateParams | null | undefined = {}, options?: RequestOptions): APIPromise<LanguageCreateResponse> {
     return this._client.post('/v2/languages', { body, ...options });
   }
 
@@ -29,11 +26,7 @@ export class Languages extends APIResource {
    * const language = await client.languages.retrieve('x');
    * ```
    */
-  retrieve(
-    identifier: string,
-    query: LanguageRetrieveParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<Language> {
+  retrieve(identifier: string, query: LanguageRetrieveParams | null | undefined = {}, options?: RequestOptions): APIPromise<Language> {
     return this._client.get(path`/v2/languages/${identifier}`, { query, ...options });
   }
 
@@ -43,11 +36,7 @@ export class Languages extends APIResource {
    * const language = await client.languages.update('x');
    * ```
    */
-  update(
-    identifier: string,
-    body: LanguageUpdateParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<Language> {
+  update(identifier: string, body: LanguageUpdateParams | null | undefined = {}, options?: RequestOptions): APIPromise<Language> {
     return this._client.post(path`/v2/languages/${identifier}`, { body, ...options });
   }
 
@@ -57,10 +46,7 @@ export class Languages extends APIResource {
    * const languages = await client.languages.list();
    * ```
    */
-  list(
-    query: LanguageListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<LanguageListResponse> {
+  list(query: LanguageListParams | null | undefined = {}, options?: RequestOptions): APIPromise<LanguageListResponse> {
     return this._client.get('/v2/languages', { query, ...options });
   }
 }
@@ -75,9 +61,9 @@ export interface Language {
   name?: string;
 }
 
-export type LanguageCreateResponse = Array<Language>;
+export type LanguageCreateResponse = Array<Language>
 
-export type LanguageListResponse = Array<Language>;
+export type LanguageListResponse = Array<Language>
 
 export interface LanguageCreateParams {
   /**
@@ -125,6 +111,6 @@ export declare namespace Languages {
     type LanguageCreateParams as LanguageCreateParams,
     type LanguageRetrieveParams as LanguageRetrieveParams,
     type LanguageUpdateParams as LanguageUpdateParams,
-    type LanguageListParams as LanguageListParams,
+    type LanguageListParams as LanguageListParams
   };
 }

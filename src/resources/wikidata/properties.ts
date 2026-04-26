@@ -14,11 +14,7 @@ export class Properties extends APIResource {
    * );
    * ```
    */
-  create(
-    identifier: string,
-    body: PropertyCreateParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<unknown> {
+  create(identifier: string, body: PropertyCreateParams | null | undefined = {}, options?: RequestOptions): APIPromise<unknown> {
     return this._client.post(path`/v2/wikidata/properties/${identifier}`, { body, ...options });
   }
 
@@ -30,18 +26,14 @@ export class Properties extends APIResource {
    * );
    * ```
    */
-  retrieve(
-    identifier: string,
-    query: PropertyRetrieveParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<unknown> {
+  retrieve(identifier: string, query: PropertyRetrieveParams | null | undefined = {}, options?: RequestOptions): APIPromise<unknown> {
     return this._client.get(path`/v2/wikidata/properties/${identifier}`, { query, ...options });
   }
 }
 
-export type PropertyCreateResponse = unknown;
+export type PropertyCreateResponse = unknown
 
-export type PropertyRetrieveResponse = unknown;
+export type PropertyRetrieveResponse = unknown
 
 export interface PropertyCreateParams {
   /**
@@ -62,6 +54,6 @@ export declare namespace Properties {
     type PropertyCreateResponse as PropertyCreateResponse,
     type PropertyRetrieveResponse as PropertyRetrieveResponse,
     type PropertyCreateParams as PropertyCreateParams,
-    type PropertyRetrieveParams as PropertyRetrieveParams,
+    type PropertyRetrieveParams as PropertyRetrieveParams
   };
 }

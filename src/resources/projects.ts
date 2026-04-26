@@ -17,10 +17,7 @@ export class Projects extends APIResource {
    * const projects = await client.projects.create();
    * ```
    */
-  create(
-    body: ProjectCreateParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<ProjectCreateResponse> {
+  create(body: ProjectCreateParams | null | undefined = {}, options?: RequestOptions): APIPromise<ProjectCreateResponse> {
     return this._client.post('/v2/projects', { body, ...options });
   }
 
@@ -30,11 +27,7 @@ export class Projects extends APIResource {
    * const project = await client.projects.retrieve('x');
    * ```
    */
-  retrieve(
-    identifier: string,
-    query: ProjectRetrieveParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<Project> {
+  retrieve(identifier: string, query: ProjectRetrieveParams | null | undefined = {}, options?: RequestOptions): APIPromise<Project> {
     return this._client.get(path`/v2/projects/${identifier}`, { query, ...options });
   }
 
@@ -44,11 +37,7 @@ export class Projects extends APIResource {
    * const project = await client.projects.update('x');
    * ```
    */
-  update(
-    identifier: string,
-    body: ProjectUpdateParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<Project> {
+  update(identifier: string, body: ProjectUpdateParams | null | undefined = {}, options?: RequestOptions): APIPromise<Project> {
     return this._client.post(path`/v2/projects/${identifier}`, { body, ...options });
   }
 
@@ -58,10 +47,7 @@ export class Projects extends APIResource {
    * const projects = await client.projects.list();
    * ```
    */
-  list(
-    query: ProjectListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<ProjectListResponse> {
+  list(query: ProjectListParams | null | undefined = {}, options?: RequestOptions): APIPromise<ProjectListResponse> {
     return this._client.get('/v2/projects', { query, ...options });
   }
 }
@@ -78,9 +64,9 @@ export interface Project {
   url?: string;
 }
 
-export type ProjectCreateResponse = Array<Project>;
+export type ProjectCreateResponse = Array<Project>
 
-export type ProjectListResponse = Array<Project>;
+export type ProjectListResponse = Array<Project>
 
 export interface ProjectCreateParams {
   /**
@@ -128,6 +114,6 @@ export declare namespace Projects {
     type ProjectCreateParams as ProjectCreateParams,
     type ProjectRetrieveParams as ProjectRetrieveParams,
     type ProjectUpdateParams as ProjectUpdateParams,
-    type ProjectListParams as ProjectListParams,
+    type ProjectListParams as ProjectListParams
   };
 }

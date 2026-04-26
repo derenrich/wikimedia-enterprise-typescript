@@ -12,11 +12,7 @@ export class Labels extends APIResource {
    * const label = await client.wikidata.labels.create('Q42');
    * ```
    */
-  create(
-    identifier: string,
-    body: LabelCreateParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<unknown> {
+  create(identifier: string, body: LabelCreateParams | null | undefined = {}, options?: RequestOptions): APIPromise<unknown> {
     return this._client.post(path`/v2/wikidata/labels/${identifier}`, { body, ...options });
   }
 
@@ -26,18 +22,14 @@ export class Labels extends APIResource {
    * const label = await client.wikidata.labels.retrieve('Q42');
    * ```
    */
-  retrieve(
-    identifier: string,
-    query: LabelRetrieveParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<unknown> {
+  retrieve(identifier: string, query: LabelRetrieveParams | null | undefined = {}, options?: RequestOptions): APIPromise<unknown> {
     return this._client.get(path`/v2/wikidata/labels/${identifier}`, { query, ...options });
   }
 }
 
-export type LabelCreateResponse = unknown;
+export type LabelCreateResponse = unknown
 
-export type LabelRetrieveResponse = unknown;
+export type LabelRetrieveResponse = unknown
 
 export interface LabelCreateParams {
   /**
@@ -58,6 +50,6 @@ export declare namespace Labels {
     type LabelCreateResponse as LabelCreateResponse,
     type LabelRetrieveResponse as LabelRetrieveResponse,
     type LabelCreateParams as LabelCreateParams,
-    type LabelRetrieveParams as LabelRetrieveParams,
+    type LabelRetrieveParams as LabelRetrieveParams
   };
 }
