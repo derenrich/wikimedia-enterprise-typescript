@@ -15,10 +15,7 @@ export class Codes extends APIResource {
    * const codes = await client.codes.create();
    * ```
    */
-  create(
-    body: CodeCreateParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<CodeCreateResponse> {
+  create(body: CodeCreateParams | null | undefined = {}, options?: RequestOptions): APIPromise<CodeCreateResponse> {
     return this._client.post('/v2/codes', { body, ...options });
   }
 
@@ -28,11 +25,7 @@ export class Codes extends APIResource {
    * const code = await client.codes.retrieve('x');
    * ```
    */
-  retrieve(
-    identifier: string,
-    query: CodeRetrieveParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<Code> {
+  retrieve(identifier: string, query: CodeRetrieveParams | null | undefined = {}, options?: RequestOptions): APIPromise<Code> {
     return this._client.get(path`/v2/codes/${identifier}`, { query, ...options });
   }
 
@@ -42,11 +35,7 @@ export class Codes extends APIResource {
    * const code = await client.codes.update('x');
    * ```
    */
-  update(
-    identifier: string,
-    body: CodeUpdateParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<Code> {
+  update(identifier: string, body: CodeUpdateParams | null | undefined = {}, options?: RequestOptions): APIPromise<Code> {
     return this._client.post(path`/v2/codes/${identifier}`, { body, ...options });
   }
 
@@ -56,10 +45,7 @@ export class Codes extends APIResource {
    * const codes = await client.codes.list();
    * ```
    */
-  list(
-    query: CodeListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<CodeListResponse> {
+  list(query: CodeListParams | null | undefined = {}, options?: RequestOptions): APIPromise<CodeListResponse> {
     return this._client.get('/v2/codes', { query, ...options });
   }
 }
@@ -78,9 +64,9 @@ export interface Filter {
   value?: string;
 }
 
-export type CodeCreateResponse = Array<Code>;
+export type CodeCreateResponse = Array<Code>
 
-export type CodeListResponse = Array<Code>;
+export type CodeListResponse = Array<Code>
 
 export interface CodeCreateParams {
   /**
@@ -129,6 +115,6 @@ export declare namespace Codes {
     type CodeCreateParams as CodeCreateParams,
     type CodeRetrieveParams as CodeRetrieveParams,
     type CodeUpdateParams as CodeUpdateParams,
-    type CodeListParams as CodeListParams,
+    type CodeListParams as CodeListParams
   };
 }

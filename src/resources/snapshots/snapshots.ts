@@ -7,25 +7,9 @@ import * as LanguagesAPI from '../languages';
 import * as NamespacesAPI from '../namespaces';
 import * as ProjectsAPI from '../projects';
 import * as ChunksAPI from './chunks';
-import {
-  ChunkCreateParams,
-  ChunkDownloadParams,
-  ChunkListParams,
-  ChunkRetrieveParams,
-  ChunkUpdateParams,
-  Chunks,
-} from './chunks';
+import { ChunkCreateParams, ChunkDownloadParams, ChunkListParams, ChunkRetrieveParams, ChunkUpdateParams, Chunks } from './chunks';
 import * as StructuredContentsAPI from './structured-contents';
-import {
-  StructuredContentCreateParams,
-  StructuredContentCreateResponse,
-  StructuredContentDownloadParams,
-  StructuredContentListParams,
-  StructuredContentListResponse,
-  StructuredContentRetrieveParams,
-  StructuredContentUpdateParams,
-  StructuredContents,
-} from './structured-contents';
+import { StructuredContentCreateParams, StructuredContentCreateResponse, StructuredContentDownloadParams, StructuredContentListParams, StructuredContentListResponse, StructuredContentRetrieveParams, StructuredContentUpdateParams, StructuredContents } from './structured-contents';
 import { APIPromise } from '../../core/api-promise';
 import { buildHeaders } from '../../internal/headers';
 import { RequestOptions } from '../../internal/request-options';
@@ -36,9 +20,7 @@ import { path } from '../../internal/utils/path';
  */
 export class Snapshots extends APIResource {
   chunks: ChunksAPI.Chunks = new ChunksAPI.Chunks(this._client);
-  structuredContents: StructuredContentsAPI.StructuredContents = new StructuredContentsAPI.StructuredContents(
-    this._client,
-  );
+  structuredContents: StructuredContentsAPI.StructuredContents = new StructuredContentsAPI.StructuredContents(this._client);
 
   /**
    * @example
@@ -46,10 +28,7 @@ export class Snapshots extends APIResource {
    * const snapshots = await client.snapshots.create();
    * ```
    */
-  create(
-    body: SnapshotCreateParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<SnapshotCreateResponse> {
+  create(body: SnapshotCreateParams | null | undefined = {}, options?: RequestOptions): APIPromise<SnapshotCreateResponse> {
     return this._client.post('/v2/snapshots', { body, ...options });
   }
 
@@ -59,11 +38,7 @@ export class Snapshots extends APIResource {
    * const snapshot = await client.snapshots.retrieve('x');
    * ```
    */
-  retrieve(
-    identifier: string,
-    query: SnapshotRetrieveParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<Snapshot> {
+  retrieve(identifier: string, query: SnapshotRetrieveParams | null | undefined = {}, options?: RequestOptions): APIPromise<Snapshot> {
     return this._client.get(path`/v2/snapshots/${identifier}`, { query, ...options });
   }
 
@@ -73,11 +48,7 @@ export class Snapshots extends APIResource {
    * const snapshot = await client.snapshots.update('x');
    * ```
    */
-  update(
-    identifier: string,
-    body: SnapshotUpdateParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<Snapshot> {
+  update(identifier: string, body: SnapshotUpdateParams | null | undefined = {}, options?: RequestOptions): APIPromise<Snapshot> {
     return this._client.post(path`/v2/snapshots/${identifier}`, { body, ...options });
   }
 
@@ -87,10 +58,7 @@ export class Snapshots extends APIResource {
    * const snapshots = await client.snapshots.list();
    * ```
    */
-  list(
-    query: SnapshotListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<SnapshotListResponse> {
+  list(query: SnapshotListParams | null | undefined = {}, options?: RequestOptions): APIPromise<SnapshotListResponse> {
     return this._client.get('/v2/snapshots', { query, ...options });
   }
 
@@ -103,20 +71,9 @@ export class Snapshots extends APIResource {
    * console.log(content);
    * ```
    */
-  download(
-    identifier: string,
-    params: SnapshotDownloadParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<Response> {
-    const { Range } = params ?? {};
-    return this._client.get(path`/v2/snapshots/${identifier}/download`, {
-      ...options,
-      headers: buildHeaders([
-        { Accept: 'application/gzip', ...(Range != null ? { Range: Range } : undefined) },
-        options?.headers,
-      ]),
-      __binaryResponse: true,
-    });
+  download(identifier: string, params: SnapshotDownloadParams | null | undefined = {}, options?: RequestOptions): APIPromise<Response> {
+    const { Range } = params ?? {}
+    return this._client.get(path`/v2/snapshots/${identifier}/download`, { ...options, headers: buildHeaders([{Accept: 'application/gzip', ...(Range != null ? { Range: Range } : undefined)}, options?.headers]), __binaryResponse: true });
   }
 }
 
@@ -138,9 +95,9 @@ export interface Snapshot {
   version?: string;
 }
 
-export type SnapshotCreateResponse = Array<Snapshot>;
+export type SnapshotCreateResponse = Array<Snapshot>
 
-export type SnapshotListResponse = Array<Snapshot>;
+export type SnapshotListResponse = Array<Snapshot>
 
 export interface SnapshotCreateParams {
   /**
@@ -200,7 +157,7 @@ export declare namespace Snapshots {
     type SnapshotRetrieveParams as SnapshotRetrieveParams,
     type SnapshotUpdateParams as SnapshotUpdateParams,
     type SnapshotListParams as SnapshotListParams,
-    type SnapshotDownloadParams as SnapshotDownloadParams,
+    type SnapshotDownloadParams as SnapshotDownloadParams
   };
 
   export {
@@ -209,7 +166,7 @@ export declare namespace Snapshots {
     type ChunkRetrieveParams as ChunkRetrieveParams,
     type ChunkUpdateParams as ChunkUpdateParams,
     type ChunkListParams as ChunkListParams,
-    type ChunkDownloadParams as ChunkDownloadParams,
+    type ChunkDownloadParams as ChunkDownloadParams
   };
 
   export {
@@ -220,6 +177,6 @@ export declare namespace Snapshots {
     type StructuredContentRetrieveParams as StructuredContentRetrieveParams,
     type StructuredContentUpdateParams as StructuredContentUpdateParams,
     type StructuredContentListParams as StructuredContentListParams,
-    type StructuredContentDownloadParams as StructuredContentDownloadParams,
+    type StructuredContentDownloadParams as StructuredContentDownloadParams
   };
 }

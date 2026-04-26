@@ -16,11 +16,7 @@ export class Items extends APIResource {
    * const item = await client.wikidata.items.create('Q42');
    * ```
    */
-  create(
-    identifier: string,
-    body: ItemCreateParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<unknown> {
+  create(identifier: string, body: ItemCreateParams | null | undefined = {}, options?: RequestOptions): APIPromise<unknown> {
     return this._client.post(path`/v2/wikidata/items/${identifier}`, { body, ...options });
   }
 
@@ -30,11 +26,7 @@ export class Items extends APIResource {
    * const item = await client.wikidata.items.retrieve('Q42');
    * ```
    */
-  retrieve(
-    identifier: string,
-    query: ItemRetrieveParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<unknown> {
+  retrieve(identifier: string, query: ItemRetrieveParams | null | undefined = {}, options?: RequestOptions): APIPromise<unknown> {
     return this._client.get(path`/v2/wikidata/items/${identifier}`, { query, ...options });
   }
 }
@@ -297,9 +289,9 @@ export interface WikidataEntityValue {
   content_data?: unknown;
 }
 
-export type ItemCreateResponse = unknown;
+export type ItemCreateResponse = unknown
 
-export type ItemRetrieveResponse = unknown;
+export type ItemRetrieveResponse = unknown
 
 export interface ItemCreateParams {
   /**
@@ -325,6 +317,6 @@ export declare namespace Items {
     type ItemCreateResponse as ItemCreateResponse,
     type ItemRetrieveResponse as ItemRetrieveResponse,
     type ItemCreateParams as ItemCreateParams,
-    type ItemRetrieveParams as ItemRetrieveParams,
+    type ItemRetrieveParams as ItemRetrieveParams
   };
 }

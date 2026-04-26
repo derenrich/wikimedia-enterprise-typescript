@@ -11,16 +11,8 @@ export class TokenRefresh extends APIResource {
   /**
    * Provides new access and id tokens with your valid username and refresh token.
    */
-  refresh(
-    body: TokenRefreshRefreshParams,
-    options?: RequestOptions,
-  ): APIPromise<TokenRefreshRefreshResponse> {
-    return this._client.post('/v1/token-refresh', {
-      body,
-      defaultBaseURL: 'https://auth.enterprise.wikimedia.com',
-      ...options,
-      __security: {},
-    });
+  refresh(body: TokenRefreshRefreshParams, options?: RequestOptions): APIPromise<TokenRefreshRefreshResponse> {
+    return this._client.post('/v1/token-refresh', { body, defaultBaseURL: 'https://auth.enterprise.wikimedia.com', ...options, __security: {  } });
   }
 }
 
@@ -41,6 +33,6 @@ export interface TokenRefreshRefreshParams {
 export declare namespace TokenRefresh {
   export {
     type TokenRefreshRefreshResponse as TokenRefreshRefreshResponse,
-    type TokenRefreshRefreshParams as TokenRefreshRefreshParams,
+    type TokenRefreshRefreshParams as TokenRefreshRefreshParams
   };
 }

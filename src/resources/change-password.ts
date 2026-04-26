@@ -13,13 +13,7 @@ export class ChangePassword extends APIResource {
    * Changes user password with your valid access token and current password.
    */
   update(body: ChangePasswordUpdateParams, options?: RequestOptions): APIPromise<void> {
-    return this._client.post('/v1/change-password', {
-      body,
-      defaultBaseURL: 'https://auth.enterprise.wikimedia.com',
-      ...options,
-      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
-      __security: {},
-    });
+    return this._client.post('/v1/change-password', { body, defaultBaseURL: 'https://auth.enterprise.wikimedia.com', ...options, headers: buildHeaders([{Accept: '*/*'}, options?.headers]), __security: {  } });
   }
 }
 
@@ -32,5 +26,7 @@ export interface ChangePasswordUpdateParams {
 }
 
 export declare namespace ChangePassword {
-  export { type ChangePasswordUpdateParams as ChangePasswordUpdateParams };
+  export {
+    type ChangePasswordUpdateParams as ChangePasswordUpdateParams
+  };
 }
