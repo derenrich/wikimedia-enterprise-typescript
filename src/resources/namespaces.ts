@@ -16,7 +16,10 @@ export class Namespaces extends APIResource {
    * const namespaces = await client.namespaces.create();
    * ```
    */
-  create(body: NamespaceCreateParams | null | undefined = {}, options?: RequestOptions): APIPromise<NamespaceCreateResponse> {
+  create(
+    body: NamespaceCreateParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<NamespaceCreateResponse> {
     return this._client.post('/v2/namespaces', { body, ...options });
   }
 
@@ -26,7 +29,11 @@ export class Namespaces extends APIResource {
    * const namespace = await client.namespaces.retrieve(0);
    * ```
    */
-  retrieve(identifier: number, query: NamespaceRetrieveParams | null | undefined = {}, options?: RequestOptions): APIPromise<Namespace> {
+  retrieve(
+    identifier: number,
+    query: NamespaceRetrieveParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<Namespace> {
     return this._client.get(path`/v2/namespaces/${identifier}`, { query, ...options });
   }
 
@@ -36,7 +43,11 @@ export class Namespaces extends APIResource {
    * const namespace = await client.namespaces.update(0);
    * ```
    */
-  update(identifier: number, body: NamespaceUpdateParams | null | undefined = {}, options?: RequestOptions): APIPromise<Namespace> {
+  update(
+    identifier: number,
+    body: NamespaceUpdateParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<Namespace> {
     return this._client.post(path`/v2/namespaces/${identifier}`, { body, ...options });
   }
 
@@ -46,7 +57,10 @@ export class Namespaces extends APIResource {
    * const namespaces = await client.namespaces.list();
    * ```
    */
-  list(query: NamespaceListParams | null | undefined = {}, options?: RequestOptions): APIPromise<NamespaceListResponse> {
+  list(
+    query: NamespaceListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<NamespaceListResponse> {
     return this._client.get('/v2/namespaces', { query, ...options });
   }
 }
@@ -59,9 +73,9 @@ export interface Namespace {
   name?: string;
 }
 
-export type NamespaceCreateResponse = Array<Namespace>
+export type NamespaceCreateResponse = Array<Namespace>;
 
-export type NamespaceListResponse = Array<Namespace>
+export type NamespaceListResponse = Array<Namespace>;
 
 export interface NamespaceCreateParams {
   /**
@@ -109,6 +123,6 @@ export declare namespace Namespaces {
     type NamespaceCreateParams as NamespaceCreateParams,
     type NamespaceRetrieveParams as NamespaceRetrieveParams,
     type NamespaceUpdateParams as NamespaceUpdateParams,
-    type NamespaceListParams as NamespaceListParams
+    type NamespaceListParams as NamespaceListParams,
   };
 }

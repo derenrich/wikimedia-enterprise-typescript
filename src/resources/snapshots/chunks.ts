@@ -18,7 +18,11 @@ export class Chunks extends APIResource {
    * const snapshot = await client.snapshots.chunks.create('x');
    * ```
    */
-  create(snapshotIdentifier: string, body: ChunkCreateParams | null | undefined = {}, options?: RequestOptions): APIPromise<SnapshotsAPI.Snapshot> {
+  create(
+    snapshotIdentifier: string,
+    body: ChunkCreateParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<SnapshotsAPI.Snapshot> {
     return this._client.post(path`/v2/snapshots/${snapshotIdentifier}/chunks`, { body, ...options });
   }
 
@@ -31,9 +35,16 @@ export class Chunks extends APIResource {
    * );
    * ```
    */
-  retrieve(identifier: string, params: ChunkRetrieveParams, options?: RequestOptions): APIPromise<SnapshotsAPI.Snapshot> {
-    const { snapshot_identifier, ...query } = params
-    return this._client.get(path`/v2/snapshots/${snapshot_identifier}/chunks/${identifier}`, { query, ...options });
+  retrieve(
+    identifier: string,
+    params: ChunkRetrieveParams,
+    options?: RequestOptions,
+  ): APIPromise<SnapshotsAPI.Snapshot> {
+    const { snapshot_identifier, ...query } = params;
+    return this._client.get(path`/v2/snapshots/${snapshot_identifier}/chunks/${identifier}`, {
+      query,
+      ...options,
+    });
   }
 
   /**
@@ -44,9 +55,16 @@ export class Chunks extends APIResource {
    * });
    * ```
    */
-  update(identifier: string, params: ChunkUpdateParams, options?: RequestOptions): APIPromise<SnapshotsAPI.Snapshot> {
-    const { snapshot_identifier, ...body } = params
-    return this._client.post(path`/v2/snapshots/${snapshot_identifier}/chunks/${identifier}`, { body, ...options });
+  update(
+    identifier: string,
+    params: ChunkUpdateParams,
+    options?: RequestOptions,
+  ): APIPromise<SnapshotsAPI.Snapshot> {
+    const { snapshot_identifier, ...body } = params;
+    return this._client.post(path`/v2/snapshots/${snapshot_identifier}/chunks/${identifier}`, {
+      body,
+      ...options,
+    });
   }
 
   /**
@@ -55,7 +73,11 @@ export class Chunks extends APIResource {
    * const snapshot = await client.snapshots.chunks.list('x');
    * ```
    */
-  list(snapshotIdentifier: string, query: ChunkListParams | null | undefined = {}, options?: RequestOptions): APIPromise<SnapshotsAPI.Snapshot> {
+  list(
+    snapshotIdentifier: string,
+    query: ChunkListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<SnapshotsAPI.Snapshot> {
     return this._client.get(path`/v2/snapshots/${snapshotIdentifier}/chunks`, { query, ...options });
   }
 
@@ -72,8 +94,15 @@ export class Chunks extends APIResource {
    * ```
    */
   download(identifier: string, params: ChunkDownloadParams, options?: RequestOptions): APIPromise<Response> {
-    const { snapshot_identifier, Range } = params
-    return this._client.get(path`/v2/snapshots/${snapshot_identifier}/chunks/${identifier}/download`, { ...options, headers: buildHeaders([{Accept: 'application/gzip', ...(Range != null ? { Range: Range } : undefined)}, options?.headers]), __binaryResponse: true });
+    const { snapshot_identifier, Range } = params;
+    return this._client.get(path`/v2/snapshots/${snapshot_identifier}/chunks/${identifier}/download`, {
+      ...options,
+      headers: buildHeaders([
+        { Accept: 'application/gzip', ...(Range != null ? { Range: Range } : undefined) },
+        options?.headers,
+      ]),
+      __binaryResponse: true,
+    });
   }
 }
 
@@ -161,6 +190,6 @@ export declare namespace Chunks {
     type ChunkRetrieveParams as ChunkRetrieveParams,
     type ChunkUpdateParams as ChunkUpdateParams,
     type ChunkListParams as ChunkListParams,
-    type ChunkDownloadParams as ChunkDownloadParams
+    type ChunkDownloadParams as ChunkDownloadParams,
   };
 }

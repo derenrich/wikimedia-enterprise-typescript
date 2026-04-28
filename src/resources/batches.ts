@@ -23,7 +23,7 @@ export class Batches extends APIResource {
    * ```
    */
   create(hour: string, params: BatchCreateParams, options?: RequestOptions): APIPromise<BatchCreateResponse> {
-    const { date, ...body } = params
+    const { date, ...body } = params;
     return this._client.post(path`/v2/batches/${date}/${hour}`, { body, ...options });
   }
 
@@ -35,8 +35,12 @@ export class Batches extends APIResource {
    * });
    * ```
    */
-  retrieve(hour: string, params: BatchRetrieveParams, options?: RequestOptions): APIPromise<BatchRetrieveResponse> {
-    const { date, ...query } = params
+  retrieve(
+    hour: string,
+    params: BatchRetrieveParams,
+    options?: RequestOptions,
+  ): APIPromise<BatchRetrieveResponse> {
+    const { date, ...query } = params;
     return this._client.get(path`/v2/batches/${date}/${hour}`, { query, ...options });
   }
 
@@ -52,9 +56,20 @@ export class Batches extends APIResource {
    * console.log(content);
    * ```
    */
-  downloadByIdentifier(identifier: string, params: BatchDownloadByIdentifierParams, options?: RequestOptions): APIPromise<Response> {
-    const { date, hour, Range } = params
-    return this._client.get(path`/v2/batches/${date}/${hour}/${identifier}/download`, { ...options, headers: buildHeaders([{Accept: 'application/gzip', ...(Range != null ? { Range: Range } : undefined)}, options?.headers]), __binaryResponse: true });
+  downloadByIdentifier(
+    identifier: string,
+    params: BatchDownloadByIdentifierParams,
+    options?: RequestOptions,
+  ): APIPromise<Response> {
+    const { date, hour, Range } = params;
+    return this._client.get(path`/v2/batches/${date}/${hour}/${identifier}/download`, {
+      ...options,
+      headers: buildHeaders([
+        { Accept: 'application/gzip', ...(Range != null ? { Range: Range } : undefined) },
+        options?.headers,
+      ]),
+      __binaryResponse: true,
+    });
   }
 
   /**
@@ -66,8 +81,12 @@ export class Batches extends APIResource {
    * );
    * ```
    */
-  retrieveByIdentifier(identifier: string, params: BatchRetrieveByIdentifierParams, options?: RequestOptions): APIPromise<Batch> {
-    const { date, hour, ...query } = params
+  retrieveByIdentifier(
+    identifier: string,
+    params: BatchRetrieveByIdentifierParams,
+    options?: RequestOptions,
+  ): APIPromise<Batch> {
+    const { date, hour, ...query } = params;
     return this._client.get(path`/v2/batches/${date}/${hour}/${identifier}`, { query, ...options });
   }
 
@@ -80,8 +99,12 @@ export class Batches extends APIResource {
    * });
    * ```
    */
-  updateByIdentifier(identifier: string, params: BatchUpdateByIdentifierParams, options?: RequestOptions): APIPromise<Batch> {
-    const { date, hour, ...body } = params
+  updateByIdentifier(
+    identifier: string,
+    params: BatchUpdateByIdentifierParams,
+    options?: RequestOptions,
+  ): APIPromise<Batch> {
+    const { date, hour, ...body } = params;
     return this._client.post(path`/v2/batches/${date}/${hour}/${identifier}`, { body, ...options });
   }
 }
@@ -108,9 +131,9 @@ export interface Size {
   value?: number;
 }
 
-export type BatchCreateResponse = Array<Batch>
+export type BatchCreateResponse = Array<Batch>;
 
-export type BatchRetrieveResponse = Array<Batch>
+export type BatchRetrieveResponse = Array<Batch>;
 
 export interface BatchCreateParams {
   /**
@@ -212,6 +235,6 @@ export declare namespace Batches {
     type BatchRetrieveParams as BatchRetrieveParams,
     type BatchDownloadByIdentifierParams as BatchDownloadByIdentifierParams,
     type BatchRetrieveByIdentifierParams as BatchRetrieveByIdentifierParams,
-    type BatchUpdateByIdentifierParams as BatchUpdateByIdentifierParams
+    type BatchUpdateByIdentifierParams as BatchUpdateByIdentifierParams,
   };
 }
