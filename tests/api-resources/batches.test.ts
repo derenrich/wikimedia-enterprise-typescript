@@ -2,7 +2,10 @@
 
 import WikimediaEnterprise from 'wikimedia-enterprise';
 
-const client = new WikimediaEnterprise({ apiKey: 'My API Key', baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
+const client = new WikimediaEnterprise({
+  apiKey: 'My API Key',
+  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+});
 
 describe('resource batches', () => {
   // Mock server tests are disabled
@@ -20,10 +23,10 @@ describe('resource batches', () => {
   // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.batches.create('x', {
-    date: 'x',
-    fields: ['string'],
-    filters: [{ field: 'field', value: 'value' }],
-  });
+      date: 'x',
+      fields: ['string'],
+      filters: [{ field: 'field', value: 'value' }],
+    });
   });
 
   // Mock server tests are disabled
@@ -41,19 +44,19 @@ describe('resource batches', () => {
   // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.batches.retrieve('x', {
-    date: 'x',
-    fields: ['name'],
-    filters: [{ field: 'field', value: 'value' }],
-  });
+      date: 'x',
+      fields: ['name'],
+      filters: [{ field: 'field', value: 'value' }],
+    });
   });
 
   // Mock server tests are disabled
   test.skip('downloadByIdentifier: required and optional params', async () => {
     const response = await client.batches.downloadByIdentifier('x', {
-    date: 'x',
-    hour: 'x',
-    Range: 'Range',
-  });
+      date: 'x',
+      hour: 'x',
+      Range: 'Range',
+    });
   });
 
   // Mock server tests are disabled
@@ -71,10 +74,10 @@ describe('resource batches', () => {
   // Mock server tests are disabled
   test.skip('retrieveByIdentifier: required and optional params', async () => {
     const response = await client.batches.retrieveByIdentifier('x', {
-    date: 'x',
-    hour: 'x',
-    fields: ['name'],
-  });
+      date: 'x',
+      hour: 'x',
+      fields: ['name'],
+    });
   });
 
   // Mock server tests are disabled
@@ -92,9 +95,9 @@ describe('resource batches', () => {
   // Mock server tests are disabled
   test.skip('updateByIdentifier: required and optional params', async () => {
     const response = await client.batches.updateByIdentifier('x', {
-    date: 'x',
-    hour: 'x',
-    fields: ['string'],
-  });
+      date: 'x',
+      hour: 'x',
+      fields: ['string'],
+    });
   });
 });

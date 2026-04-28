@@ -13,7 +13,13 @@ export class ForgotPasswordConfirm extends APIResource {
    * Changes user password with a valid confirmation code.
    */
   confirm(body: ForgotPasswordConfirmConfirmParams, options?: RequestOptions): APIPromise<void> {
-    return this._client.post('/v1/forgot-password-confirm', { body, defaultBaseURL: 'https://auth.enterprise.wikimedia.com', ...options, headers: buildHeaders([{Accept: '*/*'}, options?.headers]), __security: {  } });
+    return this._client.post('/v1/forgot-password-confirm', {
+      body,
+      defaultBaseURL: 'https://auth.enterprise.wikimedia.com',
+      ...options,
+      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+      __security: {},
+    });
   }
 }
 
@@ -26,7 +32,5 @@ export interface ForgotPasswordConfirmConfirmParams {
 }
 
 export declare namespace ForgotPasswordConfirm {
-  export {
-    type ForgotPasswordConfirmConfirmParams as ForgotPasswordConfirmConfirmParams
-  };
+  export { type ForgotPasswordConfirmConfirmParams as ForgotPasswordConfirmConfirmParams };
 }
