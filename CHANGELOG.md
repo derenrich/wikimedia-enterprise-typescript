@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.4.0 (2026-04-28)
+
+Full Changelog: [v0.3.3...v0.4.0](https://github.com/derenrich/wikimedia-enterprise-typescript/compare/v0.3.3...v0.4.0)
+
+### Features
+
+* support setting headers via env ([9722f7b](https://github.com/derenrich/wikimedia-enterprise-typescript/commit/9722f7bbd0ceb5b6306bc5c94b1cb989520308f0))
+
+
+### Chores
+
+* **formatter:** run prettier and eslint separately ([fd9f59d](https://github.com/derenrich/wikimedia-enterprise-typescript/commit/fd9f59d7fb5bea72cef6a11154d28b065e7e0638))
+* **internal:** codegen related update ([3c99108](https://github.com/derenrich/wikimedia-enterprise-typescript/commit/3c99108bb86cc71d238d5c641c78922a60126f20))
+* **internal:** codegen related update ([845d40e](https://github.com/derenrich/wikimedia-enterprise-typescript/commit/845d40e80ac9f5d45c4ef0c48e9665bc33673e7d))
+* **internal:** more robust bootstrap script ([5f56c32](https://github.com/derenrich/wikimedia-enterprise-typescript/commit/5f56c3217e2f229582643173e7a8967dd5a1131a))
+
 ## 0.3.3 (2026-04-01)
 
 Full Changelog: [v0.3.2...v0.3.3](https://github.com/derenrich/wikimedia-enterprise-typescript/compare/v0.3.2...v0.3.3)
