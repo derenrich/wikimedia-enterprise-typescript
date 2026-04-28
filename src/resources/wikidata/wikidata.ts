@@ -2,11 +2,34 @@
 
 import { APIResource } from '../../core/resource';
 import * as ItemsAPI from './items';
-import { ItemCreateParams, ItemCreateResponse, ItemRetrieveParams, ItemRetrieveResponse, Items, License, Protection, WikidataArticle, WikidataEntityProperty, WikidataEntityValue } from './items';
+import {
+  ItemCreateParams,
+  ItemCreateResponse,
+  ItemRetrieveParams,
+  ItemRetrieveResponse,
+  Items,
+  License,
+  Protection,
+  WikidataArticle,
+  WikidataEntityProperty,
+  WikidataEntityValue,
+} from './items';
 import * as LabelsAPI from './labels';
-import { LabelCreateParams, LabelCreateResponse, LabelRetrieveParams, LabelRetrieveResponse, Labels } from './labels';
+import {
+  LabelCreateParams,
+  LabelCreateResponse,
+  LabelRetrieveParams,
+  LabelRetrieveResponse,
+  Labels,
+} from './labels';
 import * as PropertiesAPI from './properties';
-import { Properties, PropertyCreateParams, PropertyCreateResponse, PropertyRetrieveParams, PropertyRetrieveResponse } from './properties';
+import {
+  Properties,
+  PropertyCreateParams,
+  PropertyCreateResponse,
+  PropertyRetrieveParams,
+  PropertyRetrieveResponse,
+} from './properties';
 
 export class Wikidata extends APIResource {
   items: ItemsAPI.Items = new ItemsAPI.Items(this._client);
@@ -29,7 +52,7 @@ export declare namespace Wikidata {
     type ItemCreateResponse as ItemCreateResponse,
     type ItemRetrieveResponse as ItemRetrieveResponse,
     type ItemCreateParams as ItemCreateParams,
-    type ItemRetrieveParams as ItemRetrieveParams
+    type ItemRetrieveParams as ItemRetrieveParams,
   };
 
   export {
@@ -37,7 +60,7 @@ export declare namespace Wikidata {
     type PropertyCreateResponse as PropertyCreateResponse,
     type PropertyRetrieveResponse as PropertyRetrieveResponse,
     type PropertyCreateParams as PropertyCreateParams,
-    type PropertyRetrieveParams as PropertyRetrieveParams
+    type PropertyRetrieveParams as PropertyRetrieveParams,
   };
 
   export {
@@ -45,6 +68,6 @@ export declare namespace Wikidata {
     type LabelCreateResponse as LabelCreateResponse,
     type LabelRetrieveResponse as LabelRetrieveResponse,
     type LabelCreateParams as LabelCreateParams,
-    type LabelRetrieveParams as LabelRetrieveParams
+    type LabelRetrieveParams as LabelRetrieveParams,
   };
 }

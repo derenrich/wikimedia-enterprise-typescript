@@ -18,7 +18,9 @@ export const toBase64 = (data: string | Uint8Array | null | undefined): string =
     return btoa(String.fromCharCode.apply(null, data as any));
   }
 
-  throw new WikimediaEnterpriseError('Cannot generate base64 string; Expected `Buffer` or `btoa` to be defined');
+  throw new WikimediaEnterpriseError(
+    'Cannot generate base64 string; Expected `Buffer` or `btoa` to be defined',
+  );
 };
 
 export const fromBase64 = (str: string): Uint8Array => {
@@ -36,5 +38,7 @@ export const fromBase64 = (str: string): Uint8Array => {
     return buf;
   }
 
-  throw new WikimediaEnterpriseError('Cannot decode base64 string; Expected `Buffer` or `atob` to be defined');
+  throw new WikimediaEnterpriseError(
+    'Cannot decode base64 string; Expected `Buffer` or `atob` to be defined',
+  );
 };

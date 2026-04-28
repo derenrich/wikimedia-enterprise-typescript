@@ -2,7 +2,10 @@
 
 import WikimediaEnterprise from 'wikimedia-enterprise';
 
-const client = new WikimediaEnterprise({ apiKey: 'My API Key', baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
+const client = new WikimediaEnterprise({
+  apiKey: 'My API Key',
+  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+});
 
 describe('resource tokenRevoke', () => {
   // Mock server tests are disabled
