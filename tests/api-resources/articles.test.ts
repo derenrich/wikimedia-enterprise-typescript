@@ -28,7 +28,7 @@ describe('resource articles', () => {
         'x',
         {
           fields: ['string'],
-          filters: [{ field: 'field', value: 'value' }],
+          filters: ['string'],
           limit: 0,
         },
         { path: '/_stainless_unknown_path' },
@@ -56,7 +56,7 @@ describe('resource articles', () => {
         'x',
         {
           fields: ['name'],
-          filters: [{ field: 'field', value: 'value' }],
+          filters: ['string'],
           limit: 0,
         },
         { path: '/_stainless_unknown_path' },

@@ -25,7 +25,7 @@ describe('resource structuredContents', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.snapshots.structuredContents.create(
-        { fields: ['string'], filters: [{ field: 'field', value: 'value' }] },
+        { fields: ['string'], filters: ['string'] },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(WikimediaEnterprise.NotFoundError);
@@ -96,7 +96,7 @@ describe('resource structuredContents', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.snapshots.structuredContents.list(
-        { fields: ['name'], filters: [{ field: 'field', value: 'value' }] },
+        { fields: ['name'], filters: ['string'] },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(WikimediaEnterprise.NotFoundError);

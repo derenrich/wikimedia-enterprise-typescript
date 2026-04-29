@@ -72,10 +72,14 @@ export interface Code {
   name?: string;
 }
 
-export interface Filter {
-  field?: string;
+export type Filter = string | Filter.FilterObject;
 
-  value?: string;
+export namespace Filter {
+  export interface FilterObject {
+    field?: string;
+
+    value?: string;
+  }
 }
 
 export type CodeCreateResponse = Array<Code>;

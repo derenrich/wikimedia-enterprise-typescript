@@ -25,7 +25,7 @@ describe('resource namespaces', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.namespaces.create(
-        { fields: ['string'], filters: [{ field: 'field', value: 'value' }] },
+        { fields: ['string'], filters: ['string'] },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(WikimediaEnterprise.NotFoundError);
@@ -87,10 +87,7 @@ describe('resource namespaces', () => {
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.namespaces.list(
-        { fields: ['name'], filters: [{ field: 'field', value: 'value' }] },
-        { path: '/_stainless_unknown_path' },
-      ),
+      client.namespaces.list({ fields: ['name'], filters: ['string'] }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(WikimediaEnterprise.NotFoundError);
   });
 });
