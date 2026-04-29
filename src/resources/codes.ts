@@ -72,10 +72,10 @@ export interface Code {
   name?: string;
 }
 
-export type Filter = string | Filter.UnionMember1;
+export type Filter = string | Filter.FilterObject;
 
 export namespace Filter {
-  export interface UnionMember1 {
+  export interface FilterObject {
     field?: string;
 
     value?: string;
