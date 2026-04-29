@@ -72,10 +72,14 @@ export interface Code {
   name?: string;
 }
 
-export interface Filter {
-  field?: string;
+export type Filter = string | Filter.UnionMember1;
 
-  value?: string;
+export namespace Filter {
+  export interface UnionMember1 {
+    field?: string;
+
+    value?: string;
+  }
 }
 
 export type CodeCreateResponse = Array<Code>;

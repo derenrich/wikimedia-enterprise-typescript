@@ -24,10 +24,7 @@ describe('resource codes', () => {
   test.skip('create: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.codes.create(
-        { fields: ['string'], filters: [{ field: 'field', value: 'value' }] },
-        { path: '/_stainless_unknown_path' },
-      ),
+      client.codes.create({ fields: ['string'], filters: ['string'] }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(WikimediaEnterprise.NotFoundError);
   });
 
@@ -87,10 +84,7 @@ describe('resource codes', () => {
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.codes.list(
-        { fields: ['name'], filters: [{ field: 'field', value: 'value' }] },
-        { path: '/_stainless_unknown_path' },
-      ),
+      client.codes.list({ fields: ['name'], filters: ['string'] }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(WikimediaEnterprise.NotFoundError);
   });
 });

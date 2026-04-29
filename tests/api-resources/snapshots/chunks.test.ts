@@ -26,7 +26,7 @@ describe('resource chunks', () => {
     await expect(
       client.snapshots.chunks.create(
         'x',
-        { fields: ['string'], filters: [{ field: 'field', value: 'value' }] },
+        { fields: ['string'], filters: ['string'] },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(WikimediaEnterprise.NotFoundError);
@@ -90,7 +90,7 @@ describe('resource chunks', () => {
     await expect(
       client.snapshots.chunks.list(
         'x',
-        { fields: ['name'], filters: [{ field: 'field', value: 'value' }] },
+        { fields: ['name'], filters: ['string'] },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(WikimediaEnterprise.NotFoundError);
