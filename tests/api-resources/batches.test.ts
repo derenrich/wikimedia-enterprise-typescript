@@ -25,7 +25,7 @@ describe('resource batches', () => {
     const response = await client.batches.create('x', {
       date: 'x',
       fields: ['string'],
-      filters: [{ field: 'field', value: 'value' }],
+      filters: ['string'],
     });
   });
 
@@ -46,7 +46,7 @@ describe('resource batches', () => {
     const response = await client.batches.retrieve('x', {
       date: 'x',
       fields: ['name'],
-      filters: [{ field: 'field', value: 'value' }],
+      filters: ['string'],
     });
   });
 
