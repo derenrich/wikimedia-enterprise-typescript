@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.5.0 (2026-04-29)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/derenrich/wikimedia-enterprise-typescript/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **api:** manual updates ([0bc0d70](https://github.com/derenrich/wikimedia-enterprise-typescript/commit/0bc0d7028d5c0146b95b5f196af9ab8447056e4a))
+* **api:** manual updates ([d812ce5](https://github.com/derenrich/wikimedia-enterprise-typescript/commit/d812ce53578cc581a72b149dd6821e2a2ca095fd))
+
+
+### Chores
+
+* **format:** run eslint and prettier separately ([1178730](https://github.com/derenrich/wikimedia-enterprise-typescript/commit/1178730f679538a4b0ff167acf5ffdf8635e559f))
+
 ## 0.4.0 (2026-04-28)
 
 Full Changelog: [v0.3.3...v0.4.0](https://github.com/derenrich/wikimedia-enterprise-typescript/compare/v0.3.3...v0.4.0)
