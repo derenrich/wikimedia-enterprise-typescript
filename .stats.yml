@@ -1,4 +1,4 @@
 configured_endpoints: 53
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/derenrich%2Fwikimedia-enterprise-107b20c7ec0513dc7ae7eadc799af67853b7316d43b4491ca20f83d73796576b.yml
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/derenrich/wikimedia-enterprise-1166de3eff8090969f5ca3928ec65da8f86f666572b6e856f2814ba6f73fd15a.yml
 openapi_spec_hash: 353f71832d539ec1ca3fc07ced659cb7
 config_hash: 7f507f551f182932d9164235c68a0ba0
