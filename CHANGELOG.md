@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.1 (2026-05-13)
+
+Full Changelog: [v0.5.0...v0.5.1](https://github.com/derenrich/wikimedia-enterprise-typescript/compare/v0.5.0...v0.5.1)
+
+### Chores
+
+* redact api-key headers in debug logs ([74dd8f1](https://github.com/derenrich/wikimedia-enterprise-typescript/commit/74dd8f1eaba8930d8061efeaa055fba8ba5208dc))
+
 ## 0.5.0 (2026-04-29)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/derenrich/wikimedia-enterprise-typescript/compare/v0.4.0...v0.5.0)
